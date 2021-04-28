@@ -35,6 +35,17 @@ class Simplify {
             }
         })
 
+        $('#new-tax-submit').on('click', function (e) {
+            e.preventDefault();
+
+            let form = document.getElementById("tax-setup");
+
+            let pristine = new Pristine(form);
+            let valid = pristine.validate(); // returns true or false
+
+            
+        })
+
 
         $('#direct-deposit-submit').on('click', function (e) {
             e.preventDefault();

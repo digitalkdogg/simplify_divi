@@ -265,6 +265,14 @@ receives a written termination notice from myself and has a reasonable opportuni
 							</div>
 						</form>
 
+						<form id = "tax-setup" method="post" class = "form">
+							<h2>New Tax Setup</h2>
+
+
+							<input type = "hidden" name="isvalid" id = "isvalid" />
+							<button id = "new-tax-submit">Submit</button>
+						</form>
+
 						<form id = "secure-form" 
 							method="post" 
 							enctype="multipart/form-data"
