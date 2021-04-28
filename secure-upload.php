@@ -109,12 +109,24 @@ help verify their account numbers and bank routing numbers.</p>
 								required data-pristine-required-message="Please enter a routing number" 
 								id = "account_name" name = "account_number" />
 							</div>
-							<br />
 							<div class = "row form-group">
 								<label for="file">File </label><input type="file" id="checkimg" name="checkimg" class = "file" />
 								<span class = "file-info"></span>
 								<div class = "pristine-error" style = "display:none;"></div>
 							</div>
+							<div class = "row form-group checkbox">
+							<h4>Terms and Service</h4>
+							<p>This authorizes Simplify Professional Services, to send credit entries (and appropriate debit and adjustment entries),
+electronically or by any other commercially accepted method, to my (our) account(s) indicated below
+and to other accounts I (we) identify in the future (the “Account”). This authorizes the financial
+institution holding the Account to post all such entries. I agree that the ACH transactions authorized
+herein shall comply with all applicable U.S. Law. This authorization will be in effect until the Company
+receives a written termination notice from myself and has a reasonable opportunity to act on it.</p>
+							<label for="terms" style = "background:transparent; color:black; width:auto; ">Check to agree : </label>
+							<input type = "checkbox" id = "terms" name = "terms" required data-pristine-required-message="Please Agree to the terms and service statement" />
+							</div>
+
+
 							<input type = "hidden" name="isvalid" id = "isvalid" />
 							<button id = "direct-deposit-submit">Submit</button>
 
