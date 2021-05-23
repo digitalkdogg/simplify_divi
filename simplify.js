@@ -13,7 +13,7 @@ class Simplify {
         $('#submit-secure-file').on('click', function (e) {
             e.preventDefault();
             let dataId = CryptoJS.MD5($(this).parents('form').find('[name="data-id"]').val()).toString();
-            
+
             _this.setCookie('clavis-' + _this.getCookie('PHPSESSID'), dataId)
             if ($(this).parents('form').find('[name="file"]')[0].files.length > 0) {
                 _this.setCookie('file-' + _this.getCookie('PHPSESSID'), $(this).parents('form').find('[name="file"]')[0].files[0].name)
@@ -22,12 +22,12 @@ class Simplify {
 
             let pristine = new Pristine(form);
             let valid = pristine.validate(); // returns true or false
-            
+
             if ($(this).parents('form').find('[name="file"]')[0].files.length == 0) {
                 valid =false;
                 $(this).parents('form').find('[name="file"]').parents('.form-group').removeClass('has-success').addClass('has-danger');
                 $(this).parents('form').find('[name="file"]').parents('.form-group').find('.pristine-error').text('Please add a file').show();
-            
+
             }
 
             if (valid == true) {
@@ -40,10 +40,23 @@ class Simplify {
 
             let form = document.getElementById("tax-setup");
 
+
             let pristine = new Pristine(form);
             let valid = pristine.validate(); // returns true or false
 
-            
+            if ($('select.required').length > 0 ) {
+
+                $('select.required').each(function () {
+                    if ($(this).val() == $(this).attr('data-default-val')) {
+                        let msg = $(this).attr('data-pristine-required-message')
+                        $(this).parents('.form-group').removeClass('has-success').addClass('has-danger');
+                        $(this).parents('.form-group').find('.pristine-error').text(msg).show();
+                        valid = false;
+                    }
+                    
+                })   
+            }
+
         })
 
 
@@ -55,13 +68,12 @@ class Simplify {
             let pristine = new Pristine(form);
             let valid = pristine.validate(); // returns true or false
 
-            console.log($(this).parents('form').find('[name="checkimg"]'))
 
             if ($(this).parents('form').find('[name="checkimg"]')[0].files.length == 0) {
                 valid =false;
                 $(this).parents('form').find('[name="checkimg"]').parents('.form-group').removeClass('has-success').addClass('has-danger');
                 $(this).parents('form').find('[name="checkimg"]').parents('.form-group').find('.pristine-error').text('Please add a file').show();
-            
+
             }
 
             if (valid == true) {
@@ -71,7 +83,7 @@ class Simplify {
                 } else {
                     $(form).attr('action', '?form=direct-deposit');
                 }
-               
+
                 $(form).submit();
             }
 
@@ -93,7 +105,7 @@ class Simplify {
                 } else {
                     $(form).attr('action', '?form=new-employee');
                 }
-               
+
                 $(form).submit();
             }
 
@@ -102,7 +114,7 @@ class Simplify {
 
         $('#new-employee-print').on('click', function (e) {
             e.preventDefault();
-          
+
             window.print();
         })
 
@@ -130,13 +142,28 @@ class Simplify {
             $('form.form').each(function () {
                 $(this).hide();
             });
-            $('form#'+_this.getUrlParams('form')).show();  
+            $('form#'+_this.getUrlParams('form')).show();
         }
-        
+
         $("input.date").flatpickr();
-        
-        
-        
+
+        $('select.states').each(function () {
+          var select = this;
+          var states = {"na": "Select State", "AL": "Alabama","AK": "Alaska","AS": "American Samoa","AZ": "Arizona","AR": "Arkansas","CA": "California","CO": "Colorado","CT": "Connecticut","DE": "Delaware","DC": "District Of Columbia","FM": "Federated States Of Micronesia","FL": "Florida","GA": "Georgia","GU": "Guam","HI": "Hawaii","ID": "Idaho","IL": "Illinois","IN": "Indiana","IA": "Iowa","KS": "Kansas","KY": "Kentucky","LA": "Louisiana","ME": "Maine","MH": "Marshall Islands","MD": "Maryland","MA": "Massachusetts","MI": "Michigan","MN": "Minnesota","MS": "Mississippi","MO": "Missouri","MT": "Montana","NE": "Nebraska","NV": "Nevada","NH": "New Hampshire","NJ": "New Jersey","NM": "New Mexico","NY": "New York","NC": "North Carolina","ND": "North Dakota","MP": "Northern Mariana Islands","OH": "Ohio","OK": "Oklahoma","OR": "Oregon","PW": "Palau",  "PA": "Pennsylvania","PR": "Puerto Rico","RI": "Rhode Island",  "SC": "South Carolina","SD": "South Dakota","TN": "Tennessee","TX": "Texas","UT": "Utah","VT": "Vermont" , "VI": "Virgin Islands","VA":"Virginia","WA":"Washington","WV": "West Virginia","WI": "Wisconsin","WY": "Wyoming"
+          }
+
+          $.each(states, function (index, val) {
+            $('<option />', {
+                'value': index,
+                'text': val
+            }).appendTo(select)
+          })
+
+        })
+
+
+
+
     }
 
     getUrlParams =  function(name){
@@ -172,18 +199,18 @@ class Simplify {
     {
         setCookie(sName,'');
     }
-    
+
 } //end Simplify class
 
    var simplify = new Simplify();
 
 setTimeout(function () {
-    
+
 
     $(document).ready(function () {
         if ($('#secure-upload-page').length > 0) {
             simplify.secureUplaodPage();
-        } 
+        }
     })
 
 },500)

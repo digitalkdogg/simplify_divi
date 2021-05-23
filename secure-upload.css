@@ -22,9 +22,9 @@
  						   flex-basis: 35%;
 						}
 
-                        .width-auto {
-                            width:auto !important;
-                        }
+            .width-auto {
+                width:auto !important;
+            }
 
 						.width-auto-desktop {
 							width:auto !important;
@@ -43,8 +43,20 @@
 							div#left-side {
  						   		flex-basis: 100%;
 							}
-                            
+
 						}
+
+						#secure-upload-page select {
+					    padding: 10px;
+					    border-top-right-radius: 7px;
+					    border-bottom-right-radius: 7px;
+					}
+
+					@media only screen and (max-width: 768px) {
+							select.states {
+								width:250px;
+							}
+					}
 
 						form#direct-deposit {
     						width: 75%;
