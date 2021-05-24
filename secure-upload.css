@@ -46,10 +46,22 @@
 
 						}
 
-						#secure-upload-page select {
+					#secure-upload-page select {
 					    padding: 10px;
 					    border-top-right-radius: 7px;
 					    border-bottom-right-radius: 7px;
+					}
+
+					#secure-upload-page .hide {
+						display:none;
+					}
+
+					button#new-party:before {
+						content: "+";
+						font-size: 2em;
+						position: relative;
+						top: 3px;
+						left: -5px;
 					}
 
 					@media only screen and (max-width: 768px) {

@@ -133,6 +133,26 @@ class Simplify {
             }
         });
 
+        $('#new-party').on('click',function (e) {
+            e.preventDefault();
+            let max = $(this).attr('data-max');
+            let numele = $('.resp-party-wrap').length;
+            if (max > numele) {
+                $('.resp-party-wrap.org').clone().insertAfter('.resp-party-wrap.org');
+
+                $('.resp-party-wrap').each(function (index,val) {
+                    if (index > 0) {
+                        let realindex = parseInt(index + 1)
+                        $(this).removeClass('org');
+                        $(this).attr('data-index', realindex);
+                        $(this).find('h5').text('Responsible Party ' + realindex)
+                        $(this).find('input.party_name').attr('id', 'party_name_' + realindex).attr('name', 'party_name_' + realindex)
+                        $(this).find('input.ssn').attr('id', 'ssn_' + realindex).attr('name', 'ssn_' + realindex)
+                    }
+                })
+            }
+        })
+
         if (_this.getUrlParams('form')==undefined) {
             $('form.form').each(function () {
                 $(this).hide();

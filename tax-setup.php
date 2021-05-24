@@ -30,7 +30,7 @@
 			</select>
 			</div>
 			<br />
-			<h4>Mailing Address</h4>
+			<h3>Mailing Address</h3>
 			<hr />
 			<div class = "row form-group">
 				<label for="mailing_address">Address</label>
@@ -60,7 +60,7 @@
 			</div>
 			<br />
 
-			<h4>Physical Address</h4>
+			<h3>Physical Address</h3>
 			<hr />
 			<div class = "row form-group">
 				<label for="physical_address">Address</label>
@@ -89,7 +89,7 @@
 				id = "physical_zip" name = "physical_zip" />
 			</div>		
 			<br />
-			<h4>Banking Information</h4>
+			<h3>Banking Information</h3>
 			<hr />
 			<p>Banking information used to make tax deposits online; Please include a copy of a voided check below</p>
 			<div class = "row form-group">
@@ -112,21 +112,29 @@
 			</div>
 
 			<br />
-			<h4>Responsible  Parties</h4>
+			<h3>Responsible  Parties</h3>
 			<hr />
+
+			<div class = "resp-party-wrap org" data-index = "1">
+				<h4>Responsibile Party 1 </h4>
+				<hr />
+				<div class = "row form-group">
+					<label for = "party_name">Party Name :</label>
+					<input type = "text"
+					required data-pristine-required-message="Please Enter Party Name"
+					id = "party_name_1" name = "party_name_1" class = "party_name" />
+				</div>
+				<div class = "row form-group">
+					<label for = "ssn">SSN or FEIN :</label>
+					<input type = "Password"
+					required data-pristine-required-message="Please Enter SSN or FEIN Number"
+					id = "ssn_1" name = "ssn_1" class = "ssn" />
+				</div>
+			</div>
 			<div class = "row form-group">
-				<label for = "responsible_parties">Number Responsible Parties :</label>
-				<select
-				data-default-val="select"
-				required data-pristine-required-message="Please enter a number for responsible parties"
-				id = "responsible_parties" name = "responsible_parties" class = "required" >
-					<option value = "select">Select Responsible Parties</option>
-					<option value = "1">1</option>
-					<option value = "2">2</option>
-					<option value = "3">3</option>
-					<option value = "4">4</option>
-					<option value = "5">5</option>
-				</select>
+				<button id = "new-party" data-max = "5">
+					 Add A New Party
+				</button>
 			</div>
 			<input type = "hidden" name="isvalid" id = "isvalid" />
 			<button id = "new-tax-submit">Submit</button>
