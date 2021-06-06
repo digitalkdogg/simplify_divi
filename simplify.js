@@ -35,7 +35,7 @@ class Simplify {
             }
         })
 
-        $('#new-tax-submit').on('click', function (e) {
+        $('#tax-submit').on('click', function (e) {
             e.preventDefault();
 
             let form = document.getElementById("tax-setup");
@@ -43,6 +43,7 @@ class Simplify {
 
             let pristine = new Pristine(form);
             let valid = pristine.validate(); // returns true or false
+ 
 
             if ($('select.required').length > 0 ) {
 
@@ -55,6 +56,17 @@ class Simplify {
                     }
                     
                 })   
+            }
+
+            if (valid == true) {
+                $(form).find('#isvalid').val('iamvalid');
+                if (window.location.href.indexOf('?form')>0) {
+                   $(form).attr('action', window.location.pathname + '?form=tax-setup');
+                } else {
+                    $(form).attr('action', '?form=tax-setup');
+                }
+
+                $(form).submit();
             }
 
         })

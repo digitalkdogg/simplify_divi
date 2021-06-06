@@ -56,6 +56,11 @@
 						display:none;
 					}
 
+					button#new-party {
+						box-shadow: none;
+						padding: 5px 20px;
+					}
+
 					button#new-party:before {
 						content: "+";
 						font-size: 2em;

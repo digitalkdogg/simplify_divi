@@ -136,6 +136,37 @@
 					 Add A New Party
 				</button>
 			</div>
+			<hr />
 			<input type = "hidden" name="isvalid" id = "isvalid" />
-			<button id = "new-tax-submit">Submit</button>
+			<button id = "tax-submit">Submit</button>
+			<?php 
+	
+
+
+
+
+			if ($_POST['isvalid']=='iamvalid') {
+				$message = 'Dearest Becky <br />';
+				$ignorearr = ['isvalid', 'csrfpId'];
+				foreach ($_POST as $key=>$post) {
+					if (!in_array($key, $ignorearr)) {
+						$message = $message . $key . ': ' . $post . '<br />';
+					}
+				}
+				//$to = 'becky@simplifyprofessionalservices.com';
+				$to = 'kevinbollman@gmail.com';
+				$subject = 'New Tax Setup';
+								
+				$headers = array('Content-Type: text/html; charset=UTF-8',
+							'From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
+				if (wp_mail( $to, $subject, $message, $headers )) {
+					?> 
+						You form was uploaded successfully
+					<?php
+				}
+
+			}
+
+			?>
+
 		</form>
