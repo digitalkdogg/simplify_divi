@@ -138,6 +138,7 @@
 			</div>
 			<hr />
 			<input type = "hidden" name="isvalid" id = "isvalid" />
+			<button id = "goback" onclick="history.back(-1);">Go Back</button>
 			<button id = "tax-submit">Submit</button>
 			<?php 
 	

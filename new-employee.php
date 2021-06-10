@@ -38,6 +38,7 @@
     
     <br />
     <input type = "hidden" name="isvalid" id = "isvalid" />
+    <button id = "goback" onclick="history.back(-1);">Go Back</button>
     <button id = "new-employee-submit">Submit</button>
     <button id = "new-employee-print">Print As PDF</button>
     <div id = "status">

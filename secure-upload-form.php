@@ -25,6 +25,8 @@
             <div class = "pristine-error" style = "display:none;"></div>
         </div>
         <br />
+
+        <button id = "goback" onclick="history.back(-1);">Go Back</button>
         <button id="submit-secure-file">Submit</button>
         <div id = "status">
         <?php

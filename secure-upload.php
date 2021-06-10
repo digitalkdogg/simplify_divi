@@ -15,16 +15,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 ?>
 
 <div id="main-content">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="<?php echo get_stylesheet_directory_uri();?>/libs/jQuery.js" type = "text/javascript"></script>
+<link rel = "stylesheet" href ="<?php echo get_stylesheet_directory_uri();?>/libs/flatpicker.css" />
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/flatpicker.js"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/pristine.js"></script>
 
-<script src="https://pristine.js.org/dist/pristine.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-core.js"></script>
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-md5.js"></script>
 
 <link rel = "stylesheet" href = "<?php echo get_stylesheet_directory_uri(); ?>/secure-upload.css" />
 
@@ -61,16 +59,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 					<div class="entry-content" id = "secure-upload-page">
 
-					<div id = "left-side">
-					<?php
-						the_content();
-
-						if ( ! $is_page_builder_used )
-							wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'Divi' ), 'after' => '</div>' ) );
-					?>
-					</div>
-					<div id = "right-side">
-
 						<?php get_template_part( 'direct-deposit' );   ?>
 
 						<?php get_template_part( 'new-employee' ); ?>
@@ -78,7 +66,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 						<?php get_template_part('tax-setup'); ?>
 
 						<?php get_template_part('secure-upload-form'); ?>	
-					</div> <!-- end right side -->
 
 					</div> <!-- .entry-content -->
 

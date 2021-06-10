@@ -56,6 +56,7 @@ receives a written termination notice from myself and has a reasonable opportuni
 
 
     <input type = "hidden" name="isvalid" id = "isvalid" />
+    <button id = "goback" onclick="history.back(-1);">Go Back</button>
     <button id = "direct-deposit-submit">Submit</button>
 
     <div id = "status">
