@@ -154,8 +154,8 @@
 						$message = $message . $key . ': ' . $post . '<br />';
 					}
 				}
-				//$to = 'becky@simplifyprofessionalservices.com';
-				$to = 'kevinbollman@gmail.com';
+				$to = 'becky@simplifyprofessionalservices.com';
+				//$to = 'kevinbollman@gmail.com';
 				$subject = 'New Tax Setup';
 								
 				$headers = array('Content-Type: text/html; charset=UTF-8',
