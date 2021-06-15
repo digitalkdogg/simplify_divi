@@ -10,8 +10,6 @@
 						}
 
 						div#secure-upload-page {
-    						display: flex;
-    						flex-direction: row;
 							min-height:400px;
 							font-family: 'Roboto',sans-serif;
 							justify-content: center;
