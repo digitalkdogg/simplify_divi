@@ -18,6 +18,11 @@
     						flex-direction: column;
     						align-items: center;
 						}
+
+						div#secure-upload-page .title-banner h1 {
+    						color: white;
+    						font-weight: bold;
+						}
 						
 
 						.width-auto {
@@ -109,7 +114,7 @@
 							padding:11px 10px 9px 10px;
 						}
 						div.row label {
-							background: #47a9aa;
+							background: #47a9bd;
 							width: 160px;
 							display: inline-block;
 							color: white;
