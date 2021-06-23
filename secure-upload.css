@@ -9,11 +9,14 @@
 							}
 						}
 
+						body.page-template-secure-upload div.container {
+							padding-top:0;
+						}
+
 						div#secure-upload-page {
 							min-height:400px;
 							font-family: 'Roboto',sans-serif;
 							justify-content: center;
-							padding: 20px 0;
 							display: flex;
     						flex-direction: column;
     						align-items: center;
