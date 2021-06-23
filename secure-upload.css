@@ -25,11 +25,16 @@
 						}
 
 						div#secure-upload-page h2 {
+							display:none;
+						}
+
+						div#secure-upload-page form h2 {
+							display:block;
     					margin: 20px 35%;
 						}
 
 						@media only screen and (max-width: 768px) {
-							div#secure-upload-page h2 {
+							div#secure-upload-page form h2 {
 								margin: 20px 0;
 							}
 						}
