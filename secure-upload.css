@@ -24,6 +24,15 @@
     						font-weight: bold;
 						}
 
+						div#secure-upload-page h2 {
+    					margin: 20px 35%;
+						}
+
+						@media only screen and (max-width: 768px) {
+							div#secure-upload-page h2 {
+								margin: 20px 0;
+							}
+						}
 
 						.width-auto {
 							width:auto !important;
