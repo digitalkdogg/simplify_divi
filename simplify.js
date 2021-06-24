@@ -157,7 +157,7 @@ class Simplify {
                         let realindex = parseInt(index + 1)
                         $(this).removeClass('org');
                         $(this).attr('data-index', realindex);
-                        $(this).find('h5').text('Responsible Party ' + realindex)
+                        $(this).find('p.respparty').text('Responsible Party ' + realindex)
                         $(this).find('input.party_name').attr('id', 'party_name_' + realindex).attr('name', 'party_name_' + realindex)
                         $(this).find('input.ssn').attr('id', 'ssn_' + realindex).attr('name', 'ssn_' + realindex)
                     }

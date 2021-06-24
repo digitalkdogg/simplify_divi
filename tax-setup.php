@@ -116,7 +116,7 @@
 			<hr />
 
 			<div class = "resp-party-wrap org" data-index = "1">
-				<h4>Responsibile Party 1 </h4>
+				<p class = "respparty">Responsibile Party 1 </p>
 				<hr />
 				<div class = "row form-group">
 					<label for = "party_name">Party Name :</label>
