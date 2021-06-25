@@ -67,6 +67,10 @@
 
 						}
 
+						#secure-upload-page .et_pb_module.et_pb_blurb {
+    					min-height: 260px;
+						}
+
 					#secure-upload-page select {
 					    padding: 10px;
 					    border-top-right-radius: 7px;
