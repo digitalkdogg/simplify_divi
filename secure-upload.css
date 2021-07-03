@@ -22,6 +22,10 @@
     						align-items: center;
 						}
 
+						div#secure-upload-page .note {
+    					font-style: italic;
+						}
+
 						div#secure-upload-page .title-banner h1 {
     						color: white;
     						font-weight: bold;
