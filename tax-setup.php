@@ -142,6 +142,13 @@
 				</button>
 			</div>
 			<hr />
+			<div class = "row form-group checkbox">
+			<h4>Terms and Service</h4>
+			<p> It is understood that the above information is and must be kept confidential.  Simplify Professional Services shall limit the disclosure of the confidential information to completion of forms for the sole purpose of setting up payroll accounts and payment processes.  </p>
+			<label for="terms" style = "background:transparent; color:black; width:auto; ">Check to agree : </label>
+			<input type = "checkbox" id = "terms" name = "terms" required data-pristine-required-message="Please Agree to the terms and service statement" />
+			</div>
+
 			<input type = "hidden" name="isvalid" id = "isvalid" />
 			<button id = "goback" onclick="history.back(-1);">Go Back</button>
 			<button id = "tax-submit">Submit</button>
