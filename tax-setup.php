@@ -1,7 +1,7 @@
-						
-                        
+
+
 		<form id = "tax-setup" method="post" class = "form">
-			<h2>New Tax Setup</h2>
+			<h2>Payroll Tax Setup Information Form</h2>
 			<div class = "row form-group">
 				<label for="company_name">Company Name</label>
 				<input type = "text"
@@ -28,6 +28,11 @@
 					<option value = "s-corporation">S-Corporation</option>
 					<option value = "Limited Liability Company">Limited Liability Company</option>
 			</select>
+			</div>
+			<div class = "row form-group">
+				<label for = "desc" style = "transform: translateY(-35px);">Description of Business Activity :</label>
+				<textarea id = "desc" name = "desc" cols = "45" rows = "5"
+				 required data-pristine-required-message="Please enter a Description of Business Activity"></textarea>
 			</div>
 			<br />
 			<h3>Mailing Address</h3>
@@ -87,7 +92,7 @@
 				<input type = "text"
 				required data-pristine-required-message="Please enter a phycial Zip"
 				id = "physical_zip" name = "physical_zip" />
-			</div>		
+			</div>
 			<br />
 			<h3>Banking Information</h3>
 			<hr />
@@ -140,8 +145,8 @@
 			<input type = "hidden" name="isvalid" id = "isvalid" />
 			<button id = "goback" onclick="history.back(-1);">Go Back</button>
 			<button id = "tax-submit">Submit</button>
-			<?php 
-	
+			<?php
+
 
 
 
@@ -157,11 +162,11 @@
 				$to = 'becky@simplifyprofessionalservices.com';
 				//$to = 'kevinbollman@gmail.com';
 				$subject = 'New Tax Setup';
-								
+
 				$headers = array('Content-Type: text/html; charset=UTF-8',
 							'From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
 				if (wp_mail( $to, $subject, $message, $headers )) {
-					?> 
+					?>
 						You form was uploaded successfully
 					<?php
 				}
