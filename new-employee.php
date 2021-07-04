@@ -26,7 +26,18 @@
         <label for="pay">Rate Pay or Salary </label>
         <input type = "text"
         required data-pristine-required-message="Please enter a rate pay or salary"
-        id = "pay" name = "pay" />
+        id = "pay" name = "pay" /> 
+    </div>
+
+    <div class = "row form-group">
+        <label for="rate">Unit Of Pay:</label>
+        <select
+				data-default-val="select"
+				required data-pristine-required-message="Please enter a rate of pay"
+				id = "rate" name = "rate" class = "required">
+					<option value = "Hourly" >Hourly</option>
+					<option value = "Yearly" selected>Yearly</option>
+			</select>
     </div>
 
     <div class = "row form-group">
