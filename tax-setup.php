@@ -115,6 +115,11 @@
 				required data-pristine-required-message="Please enter an account number"
 				id = "accout_number" name = "account_number" />
 			</div>
+			<div class = "row form-group">
+				<label for="file">File </label><input type="file" id="checkimg" name="checkimg" class = "file" />
+				<span class = "file-info"></span>
+				<div class = "pristine-error" style = "display:none;"></div>
+			</div>
 
 			<br />
 			<h3>Responsible  Parties</h3>
@@ -159,24 +164,57 @@
 
 
 			if ($_POST['isvalid']=='iamvalid') {
-				$message = 'Dearest Becky <br />';
-				$ignorearr = ['isvalid', 'csrfpId'];
-				foreach ($_POST as $key=>$post) {
-					if (!in_array($key, $ignorearr)) {
-						$message = $message . $key . ': ' . $post . '<br />';
+				if ($_POST) {
+					if(isset($_FILES['file'])){
+		
+		
+						$errors= array();
+						$file_name = $_FILES['file']['name'];
+						$file_size =$_FILES['file']['size'];
+						$file_tmp =$_FILES['file']['tmp_name'];
+						$file_type=$_FILES['file']['type'];
+						$file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
+		
+						$extensions= array("jpeg","jpg","png","gif" );
+		
+						if(in_array($file_ext,$extensions)=== false){
+							$errors[]="extension not allowed, please choose a JPEG or PNG file.";
+						}
+		
+						if($file_size > 200097152){
+							$errors[]='File size must be less than 200 MB';
+						}
+						
 					}
 				}
-				$to = 'becky@simplifyprofessionalservices.com';
-				//$to = 'kevinbollman@gmail.com';
-				$subject = 'New Tax Setup';
 
-				$headers = array('Content-Type: text/html; charset=UTF-8',
-							'From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
-				if (wp_mail( $to, $subject, $message, $headers )) {
-					?>
-						You form was uploaded successfully
-					<?php
-				}
+
+					$message = 'Dearest Becky <br />';
+					$ignorearr = ['isvalid', 'csrfpId'];
+					foreach ($_POST as $key=>$post) {
+						if (!in_array($key, $ignorearr)) {
+							$message = $message . $key . ': ' . $post . '<br />';
+						}
+					}
+					$to = 'becky@simplifyprofessionalservices.com';
+					//$to = 'kevinbollman@gmail.com';
+					$subject = 'New Tax Setup';
+
+					$headers = array('Content-Type: text/html; charset=UTF-8',
+								'From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
+					
+					if(empty($errors)==true){
+						$message = $message . '<br />' . 'Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
+
+					}
+					
+					if (wp_mail( $to, $subject, $message, $headers )) {
+						?>
+							You form was uploaded successfully
+						<?php
+					}
+				
+
 
 			}
 
