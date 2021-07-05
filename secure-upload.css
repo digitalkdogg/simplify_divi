@@ -81,6 +81,11 @@
 					    border-bottom-right-radius: 7px;
 					}
 
+					#secure-upload-page textarea {
+						border-top-right-radius: 7px;
+						border-bottom-right-radius: 7px;
+					}
+
 					#secure-upload-page .hide {
 						display:none;
 					}

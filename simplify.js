@@ -40,7 +40,6 @@ class Simplify {
 
             let form = document.getElementById("tax-setup");
 
-
             let pristine = new Pristine(form);
             let valid = pristine.validate(); // returns true or false
  
@@ -56,6 +55,13 @@ class Simplify {
                     }
                     
                 })   
+            }
+
+            if ($(this).parents('form').find('[name="file"]')[0].files.length == 0) {
+                valid =false;
+                $(this).parents('form').find('[name="file"]').parents('.form-group').removeClass('has-success').addClass('has-danger');
+                $(this).parents('form').find('[name="file"]').parents('.form-group').find('.pristine-error').text('Please add a file').show();
+
             }
 
             if (valid == true) {
@@ -160,6 +166,10 @@ class Simplify {
                         $(this).find('p.respparty').text('Responsible Party ' + realindex)
                         $(this).find('input.party_name').attr('id', 'party_name_' + realindex).attr('name', 'party_name_' + realindex)
                         $(this).find('input.ssn').attr('id', 'ssn_' + realindex).attr('name', 'ssn_' + realindex)
+                        $(this).find('input.title').attr('id', 'title_' + realindex).attr('name', 'title_' + realindex)
+                        $(this).find('input.phone').attr('id', 'phone_' + realindex).attr('name', 'phone_' + realindex)
+                        $(this).find('input.email').attr('id', 'email_' + realindex).attr('name', 'email_' + realindex)
+
                     }
                 })
             }

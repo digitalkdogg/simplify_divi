@@ -1,6 +1,10 @@
 
 
-		<form id = "tax-setup" method="post" class = "form"  enctype="multipart/form-data">
+		<form id = "tax-setup"
+			 method="post" 
+			 class = "form <?php if ($_POST['isvalid']=='iamvalid') {echo "has-post"; }?>"  
+			 enctype="multipart/form-data">
+
 			<h2>Payroll Tax Setup Information Form</h2>
 			<input type = "hidden" name = "data-id" id = "data-id" value = "<?php echo get_hash_string(); ?>" />
 			<div class = "row form-group">
@@ -141,6 +145,22 @@
 					required data-pristine-required-message="Please Enter SSN or FEIN Number"
 					id = "ssn_1" name = "ssn_1" class = "ssn" />
 				</div>
+				<div class = "row form-group">
+					<label for = "title">Title :</label>
+					<input type = "text"
+					required data-pristine-required-message="Please Enter Title"
+					id = "title_1" name = "title_1" class = "title" />
+				</div>
+				<div class = "row form-group">
+					<label for = " Phone number">Phone Number :</label>
+					<input type = "text" placeholder="555-555-5555"
+					id = "phone_1" name = "phone_1" class = "phone" />
+				</div>
+				<div class = "row form-group">
+					<label for = " Email">Email :</label>
+					<input type = "text" placeholder="johnsmith@someplace.com"
+					id = "email_1" name = "email_1" class = "email" />
+				</div>
 			</div>
 			<div class = "row form-group">
 				<button id = "new-party" data-max = "5">
@@ -209,13 +229,10 @@
 							
 								if (move_uploaded_file($file_tmp,get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $file_name)==true) {
 								?>
-									<div style = "color:#47a9aa;">
-										<?php echo $file_name; ?> was uploaded succesful
-									</div>
+									
 								<?php
 								  $message =  $message .'<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
-							
-								//  mail($to, $subject, $message, $headers);
+	
 							} else { ?>
 								<div style = "color:red;">
 									There was an issue uploading your file please try again
@@ -237,23 +254,11 @@
 					}
 				}
 
-				//	if(empty($errors)==true){
-				//		if (md5($_POST['data-id'])) {
-				//			var_dump(md5($_POST['data-id']));
-				//			$file_name = str_replace(' ', '_', $file_name);
-							//var_dump(move_uploaded_file($file_tmp, get_template_directory(). "/../../../uploads/".substr($_POST['data-id'], -7) ));
-				//			var_dump($_FILES);
-				//			if (move_uploaded_file($file_tmp,get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $file_name)==true) {
 							
 							?>
 								
 							<?php
 							
-				//		$message = $message . '<br />' . 'Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
-					
-				//			}
-				//		}	
-				//	}
 					
 					if (wp_mail( $to, $subject, $message, $headers )) {
 						?>
