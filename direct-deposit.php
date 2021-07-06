@@ -1,5 +1,5 @@
 <form id = "direct-deposit" class = "form" method="post" enctype="multipart/form-data" >
-    <h4>Direct Deposit Authorization Form</h4>
+    <h2>Direct Deposit Authorization Form</h2>
     <p>This document must be signed by employees and/or vendors requesting automatic deposit of
 paychecks/checks and retained on file by the employer. Please attach a voided check for the account to
 help verify their account numbers and bank routing numbers.</p>

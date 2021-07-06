@@ -191,7 +191,7 @@
 
 
 					$message = 'Dearest Becky <br />';
-					$ignorearr = ['isvalid', 'csrfpId'];
+					$ignorearr = ['isvalid', 'csrfpId', 'data-id'];
 					foreach ($_POST as $key=>$post) {
 						if (!in_array($key, $ignorearr)) {
 							$message = $message . $key . ': ' . $post . '<br />';

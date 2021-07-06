@@ -1,4 +1,5 @@
 <form id = "new-employee" class = "form" method="post" >
+<h2>New Employee Form</h2>
     <div class = "row form-group">
         <label for="employee_name">Employee Name</label>
         <input type = "text"
