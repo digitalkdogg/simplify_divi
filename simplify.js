@@ -42,7 +42,7 @@ class Simplify {
 
             let pristine = new Pristine(form);
             let valid = pristine.validate(); // returns true or false
- 
+
 
             if ($('select.required').length > 0 ) {
 
@@ -53,8 +53,8 @@ class Simplify {
                         $(this).parents('.form-group').find('.pristine-error').text(msg).show();
                         valid = false;
                     }
-                    
-                })   
+
+                })
             }
 
             if ($(this).parents('form').find('[name="file"]')[0].files.length == 0) {
@@ -169,7 +169,10 @@ class Simplify {
                         $(this).find('input.title').attr('id', 'title_' + realindex).attr('name', 'title_' + realindex)
                         $(this).find('input.phone').attr('id', 'phone_' + realindex).attr('name', 'phone_' + realindex)
                         $(this).find('input.email').attr('id', 'email_' + realindex).attr('name', 'email_' + realindex)
-
+                        $(this).find('input.resp_address').attr('id', 'resp_address_' + realindex).attr('name', 'resp_address_' + realindex)
+                        $(this).find('input.resp_city').attr('id', 'resp_city_' + realindex).attr('name', 'resp_city_' + realindex)
+                        $(this).find('select.resp_state').attr('id', 'resp_state_' + realindex).attr('name', 'resp_state_' + realindex)
+                        $(this).find('input.resp_zip').attr('id', 'resp_zip_' + realindex).attr('name', 'resp_zip_' + realindex)
                     }
                 })
             }
@@ -188,6 +191,17 @@ class Simplify {
         }
 
         $("input.date").flatpickr();
+
+        $("button.goback").on('click', function (event) {
+          event.preventDefault();
+          let host = simplify.page.location.hostname
+          if (host.indexOf('kevin-nas') >= 0) {
+            history.back(-1);
+          } else {
+            window.location.href = simplify.page.location.origin + simplify.page.location.pathname + "../sps/upload-dashboard/";
+          }
+
+        })
 
         $('select.states').each(function () {
           var select = this;
@@ -241,7 +255,6 @@ class Simplify {
     {
         setCookie(sName,'');
     }
-
 } //end Simplify class
 
    var simplify = new Simplify();

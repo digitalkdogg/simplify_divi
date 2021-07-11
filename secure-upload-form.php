@@ -26,7 +26,8 @@
         </div>
         <br />
 
-        <button id = "goback" onclick="history.back(-1);">Go Back</button>
+
+  			<button id = "goback" class = "goback">Go Back</button>
         <button id="submit-secure-file">Submit</button>
         <div id = "status">
         <?php

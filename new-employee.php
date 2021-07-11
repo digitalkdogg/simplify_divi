@@ -27,7 +27,7 @@
         <label for="pay">Rate Pay or Salary </label>
         <input type = "text"
         required data-pristine-required-message="Please enter a rate pay or salary"
-        id = "pay" name = "pay" /> 
+        id = "pay" name = "pay" />
     </div>
 
     <div class = "row form-group">
@@ -53,7 +53,8 @@
 
     <br />
     <input type = "hidden" name="isvalid" id = "isvalid" />
-    <button id = "goback" onclick="history.back(-1);">Go Back</button>
+
+    <button id = "goback" class = "goback">Go Back</button>
     <button id = "new-employee-submit">Submit</button>
     <button id = "new-employee-print">Print As PDF</button>
     <div id = "status">

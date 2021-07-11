@@ -1,8 +1,8 @@
 
 
 		<form id = "tax-setup"
-			 method="post" 
-			 class = "form <?php if ($_POST['isvalid']=='iamvalid') {echo "has-post"; }?>"  
+			 method="post"
+			 class = "form <?php if ($_POST['isvalid']=='iamvalid') {echo "has-post"; }?>"
 			 enctype="multipart/form-data">
 
 			<h2>Payroll Tax Setup Information Form</h2>
@@ -81,7 +81,7 @@
 			<div class = "row form-group">
 				<label for="physical_city">City</label>
 				<input type = "text"
-				required data-pristine-required-message="Please enter a phycial City"
+				required data-pristine-required-message="Please enter a physical City"
 				id = "physical_city" name = "physical_city" />
 			</div>
 			<div class = "row form-group">
@@ -161,12 +161,40 @@
 					<input type = "text" placeholder="johnsmith@someplace.com"
 					id = "email_1" name = "email_1" class = "email" />
 				</div>
+				<div class = "row form-group">
+					<label for="resp_address">Address</label>
+					<input type = "text"
+					id = "resp_address_1" name = "resp_address_1" class = "resp_address"/>
+				</div>
+				<div class = "row form-group">
+					<label for="resp_city">City</label>
+					<input type = "text"
+					id = "resp_city_1" name = "resp_city_1" class = "resp_city" />
+				</div>
+				<div class = "row form-group">
+					<label for="resp_state">State</label>
+					<select
+					data-default-val="na"
+					id = "resp_state_1" name = "resp_state_1" class = "states resp_state">
+				</select>
+				</div>
+				<div class = "row form-group">
+					<label for="resp_zip">Zip</label>
+					<input type = "text"
+					id = "resp_zip_1" name = "resp_zip_1" class = "resp_zip"/>
+				</div>
+				<div class = "row form-group">
+					<label for="resp_birth_date">Birth Date</label>
+					<input type = "text"
+					id = "resp_birth_date_1" name = "resp_birth_date_1" class = "resp_birth_date date"/>
+				</div>
 			</div>
 			<div class = "row form-group">
 				<button id = "new-party" data-max = "5">
 					 Add A New Party
 				</button>
 			</div>
+
 			<hr />
 			<div class = "row form-group checkbox">
 			<h4>Terms and Service</h4>
@@ -176,7 +204,7 @@
 			</div>
 
 			<input type = "hidden" name="isvalid" id = "isvalid" />
-			<button id = "goback" onclick="history.back(-1);">Go Back</button>
+			<button id = "goback" class = "goback">Go Back</button>
 			<button id = "tax-submit">Submit</button>
 			<?php
 
@@ -186,7 +214,7 @@
 
 			if ($_POST['isvalid']=='iamvalid') {
 				if ($_POST) {
-		
+
 				}
 
 
@@ -211,28 +239,28 @@
 						$file_tmp =$_FILES['file']['tmp_name'];
 						$file_type=$_FILES['file']['type'];
 						$file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
-		
+
 						$extensions= array("jpeg","jpg","png","gif", "svg", "pdf", "doc", "docx", "csv" );
-		
+
 						if(in_array($file_ext,$extensions)=== false){
 							$errors[]="extension not allowed, please choose a JPEG or PNG file.";
 						}
-		
+
 						if($file_size > 200097152){
 							$errors[]='File size must be less than 200 MB';
 						}
 
 						if(empty($errors)==true){
 							if (md5($_POST['data-id'])) {
-		
+
 								$file_name = str_replace(' ', '_', $file_name);
-							
+
 								if (move_uploaded_file($file_tmp,get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $file_name)==true) {
 								?>
-									
+
 								<?php
 								  $message =  $message .'<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
-	
+
 							} else { ?>
 								<div style = "color:red;">
 									There was an issue uploading your file please try again
@@ -247,25 +275,25 @@
 						}
 					} else { ?>
 						<div style = "color:red;">
-		
+
 							<?php echo $errors[0]; ?>
 						</div>
 					<?php
 					}
 				}
 
-							
+
 							?>
-								
+
 							<?php
-							
-					
+
+
 					if (wp_mail( $to, $subject, $message, $headers )) {
 						?>
 							You form was uploaded successfully
 						<?php
 					}
-				
+
 
 
 			}
