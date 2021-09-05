@@ -1,88 +1,190 @@
-<form id = "new-employee" class = "form" method="post" >
-<h2>New Employee Form</h2>
-    <div class = "row form-group">
-        <label for="employee_name">Employee Name</label>
-        <input type = "text"
-        required data-pristine-required-message="Please enter a name"
-        id = "employee_name" name = "employee_name" />
-    </div>
+<?php
 
-    <div class = "row form-group">
-        <label for="email_name">Email Address</label>
-        <input type = "email"
-        required data-pristine-required-message="Please enter a email address"
-        id = "email_name" name = "email_name" />
-    </div>
+/*
+Template Name: Secure Upload - New Employee
+*/
 
-    <div class = "row form-group">
-        <label for="start_date">Start Date</label>
-        <input type = "text"
-        class="date"
-        required data-pristine-required-message="Please enter a start date"
-        id = "start_date" name = "start_date" />
-    </div>
+get_header();
+
+if( !session_id() )
+     // session_start();
 
 
-    <div class = "row form-group">
-        <label for="pay">Rate Pay or Salary </label>
-        <input type = "text"
-        required data-pristine-required-message="Please enter a rate pay or salary"
-        id = "pay" name = "pay" />
-    </div>
+$is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
-    <div class = "row form-group">
-        <label for="rate">Unit Of Pay:</label>
-        <select
-				data-default-val="select"
-				required data-pristine-required-message="Please enter a rate of pay"
-				id = "rate" name = "rate" class = "required">
-					<option value = "Hourly" >Hourly</option>
-					<option value = "Yearly" selected>Yearly</option>
-			</select>
-    </div>
+?>
 
-    <div class = "row form-group">
-        <label for="benefits">Benefits </label>
-        <input type = "text"
-        required data-pristine-required-message="Please enter something for the benefits"
-        id = "benefits" name = "beneftis" />
-    </div>
-    <div class = "row note">
-      Remember to submit a W4, AR W4 and Direct Deposit form (if applicable)
-    </div>
+<div id="main-content">
+<script src="<?php echo get_stylesheet_directory_uri();?>/libs/jQuery.js" type = "text/javascript"></script>
+<link rel = "stylesheet" href ="<?php echo get_stylesheet_directory_uri();?>/libs/flatpicker.css" />
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/flatpicker.js"></script>
 
-    <br />
-    <input type = "hidden" name="isvalid" id = "isvalid" />
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/pristine.js"></script>
 
-    <button id = "goback" class = "goback">Go Back</button>
-    <button id = "new-employee-submit">Submit</button>
-    <button id = "new-employee-print">Print As PDF</button>
-    <div id = "status">
-    <?php
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-core.js"></script>
+<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-md5.js"></script>
 
-    if ($_POST['isvalid']=='iamvalid') {
+<link rel = "stylesheet" href = "<?php echo get_stylesheet_directory_uri(); ?>/secure-upload.css" />
 
 
-        $to = 'becky@simplifyprofessionalservices.com';
-        //$to = 'kevinbollman@gmail.com';
-        $subject = 'New Employee Submission';
-        $message = 'Here is the new employee info : <br /> <br />
-        Employee Name : ' . $_POST['employee_name'] .
-        '<br />Email Address : ' . $_POST['email_name'] .
-        '<br />Start Date : ' . $_POST['start_date'] .
-        '<br />Salary :'. $_POST['pay']  .
-        '<br />benefits : ' . $_POST['beneftis'];
-        //	$message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
+<?php if ( ! $is_page_builder_used ) : ?>
 
-        $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
-        if (wp_mail( $to, $subject, $message, $headers )) {
-            ?>
-                You form was uploaded successfully
-            <?php
-        }
+	<div class="container">
+		<div id="content-area" class="clearfix">
 
-    }
+<?php endif; ?>
 
-    ?>
-    </div>
-</form>
+			<?php while ( have_posts() ) : the_post(); ?>
+
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
+				<?php if ( ! $is_page_builder_used ) : ?>
+				<?php
+					$thumb = '';
+
+					$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
+
+					$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
+					$classtext = 'et_featured_image';
+					$titletext = get_the_title();
+					$alttext = get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true );
+					$thumbnail = get_thumbnail( $width, $height, $classtext, $alttext, $titletext, false, 'Blogimage' );
+					$thumb = $thumbnail["thumb"];
+
+					if ( 'on' === et_get_option( 'divi_page_thumbnails', 'false' ) && '' !== $thumb )
+						print_thumbnail( $thumb, $thumbnail["use_timthumb"], $alttext, $width, $height );
+				?>
+
+				<?php endif; ?>
+
+					<div class="entry-content new-employee" id = "secure-upload-page">
+
+					<?php
+						the_content();
+
+                        var_dump(get_post_custom_values( 'go_back_page' ));
+
+						if ( ! $is_page_builder_used )
+							wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'Divi' ), 'after' => '</div>' ) );
+					?>
+                    <form id = "new-employee" class = "form" method="post" >
+                    <h2>New Employee Form</h2>
+                        <div class = "row form-group">
+                            <label for="employee_name">Employee Name</label>
+                            <input type = "text"
+                            required data-pristine-required-message="Please enter a name"
+                            id = "employee_name" name = "employee_name" />
+                        </div>
+
+                        <div class = "row form-group">
+                            <label for="email_name">Email Address</label>
+                            <input type = "email"
+                            required data-pristine-required-message="Please enter a email address"
+                            id = "email_name" name = "email_name" />
+                        </div>
+
+                        <div class = "row form-group">
+                            <label for="start_date">Start Date</label>
+                            <input type = "text"
+                            class="date"
+                            required data-pristine-required-message="Please enter a start date"
+                            id = "start_date" name = "start_date" />
+                        </div>
+
+
+                        <div class = "row form-group">
+                            <label for="pay">Rate Pay or Salary </label>
+                            <input type = "text"
+                            required data-pristine-required-message="Please enter a rate pay or salary"
+                            id = "pay" name = "pay" />
+                        </div>
+
+                        <div class = "row form-group">
+                            <label for="rate">Unit Of Pay:</label>
+                            <select
+                                    data-default-val="select"
+                                    required data-pristine-required-message="Please enter a rate of pay"
+                                    id = "rate" name = "rate" class = "required">
+                                        <option value = "Hourly" >Hourly</option>
+                                        <option value = "Yearly" selected>Yearly</option>
+                                </select>
+                        </div>
+
+                        <div class = "row form-group">
+                            <label for="benefits">Benefits </label>
+                            <input type = "text"
+                            required data-pristine-required-message="Please enter something for the benefits"
+                            id = "benefits" name = "beneftis" />
+                        </div>
+                        <div class = "row note">
+                        Remember to submit a W4, AR W4 and Direct Deposit form (if applicable)
+                        </div>
+
+                        <br />
+                        <input type = "hidden" name="isvalid" id = "isvalid" />
+                        <?php 
+                            if (get_post_custom_values('go_back_page')!=null) {
+                                echo "<a href = '". get_post_custom_values('go_back_page')[0] ."'>";
+                                echo "<button id = 'goback' class = 'goback'>Go Back!</button>";
+                                echo "</a>";
+                            }
+                            
+                        ?>
+
+                        <button id = "new-employee-submit">Submit</button>
+                        <button id = "new-employee-print">Print As PDF</button>
+                        <div id = "status">
+                        <?php
+
+                        if ($_POST['isvalid']=='iamvalid') {
+
+
+                            $to = 'becky@simplifyprofessionalservices.com';
+                            //$to = 'kevinbollman@gmail.com';
+                            $subject = 'New Employee Submission';
+                            $message = 'Here is the new employee info : <br /> <br />
+                            Employee Name : ' . $_POST['employee_name'] .
+                            '<br />Email Address : ' . $_POST['email_name'] .
+                            '<br />Start Date : ' . $_POST['start_date'] .
+                            '<br />Salary :'. $_POST['pay']  .
+                            '<br />benefits : ' . $_POST['beneftis'];
+                            //	$message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
+
+                            $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
+                            if (wp_mail( $to, $subject, $message, $headers )) {
+                                ?>
+                                    You form was uploaded successfully
+                                <?php
+                            }
+
+                        }
+
+                        ?>
+                        </div>
+                    </form>
+
+
+					</div> <!-- .entry-content -->
+
+				<?php
+					if ( ! $is_page_builder_used && comments_open() && 'on' === et_get_option( 'divi_show_pagescomments', 'false' ) ) comments_template( '', true );
+				?>
+
+				</article> <!-- .et_pb_post -->
+
+			<?php endwhile; ?>
+
+<?php if ( ! $is_page_builder_used ) : ?>
+
+			</div> <!-- #left-area -->
+
+		</div> <!-- #content-area -->
+	</div> <!-- .container -->
+
+<?php endif; ?>
+
+</div> <!-- #main-content -->
+
+<?php
+
+get_footer();

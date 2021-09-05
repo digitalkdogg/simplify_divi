@@ -178,17 +178,17 @@ class Simplify {
             }
         })
 
-        if (_this.getUrlParams('form')==undefined) {
-            $('form.form').each(function () {
-                $(this).hide();
-            });
-            $('#secure-form').show();
-        } else {
-            $('form.form').each(function () {
-                $(this).hide();
-            });
-            $('form#'+_this.getUrlParams('form')).show();
-        }
+     //   if (_this.getUrlParams('form')==undefined) {
+    //        $('form.form').each(function () {
+    //            $(this).hide();
+    //        });
+    //        $('#secure-form').show();
+    //    } else {
+    //        $('form.form').each(function () {
+    //            $(this).hide();
+    //        });
+    //        $('form#'+_this.getUrlParams('form')).show();
+    //    }
 
         $("input.date").flatpickr();
 
@@ -263,7 +263,7 @@ setTimeout(function () {
 
 
     $(document).ready(function () {
-        if ($('#secure-upload-page').length > 0) {
+       if ($('#secure-upload-page').length > 0) {
             simplify.secureUplaodPage();
         }
     })
