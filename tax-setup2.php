@@ -1,73 +1,6 @@
-<?php
-
-/*
-Template Name: Secure Upload - New Tax Setup
-*/
-
-get_header();
-
-if( !session_id() )
-      session_start();
 
 
-$is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
-
-?>
-
-<div id="main-content">
-<script src="<?php echo get_stylesheet_directory_uri();?>/libs/jQuery.js" type = "text/javascript"></script>
-<link rel = "stylesheet" href ="<?php echo get_stylesheet_directory_uri();?>/libs/flatpicker.css" />
-<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/flatpicker.js"></script>
-
-<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/pristine.js"></script>
-
-<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-core.js"></script>
-<script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-md5.js"></script>
-
-<link rel = "stylesheet" href = "<?php echo get_stylesheet_directory_uri(); ?>/secure-upload.css" />
-
-
-<?php if ( ! $is_page_builder_used ) : ?>
-
-	<div class="container">
-		<div id="content-area" class="clearfix">
-
-<?php endif; ?>
-
-			<?php while ( have_posts() ) : the_post(); ?>
-
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
-				<?php if ( ! $is_page_builder_used ) : ?>
-				<?php
-					$thumb = '';
-
-					$width = (int) apply_filters( 'et_pb_index_blog_image_width', 1080 );
-
-					$height = (int) apply_filters( 'et_pb_index_blog_image_height', 675 );
-					$classtext = 'et_featured_image';
-					$titletext = get_the_title();
-					$alttext = get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true );
-					$thumbnail = get_thumbnail( $width, $height, $classtext, $alttext, $titletext, false, 'Blogimage' );
-					$thumb = $thumbnail["thumb"];
-
-					if ( 'on' === et_get_option( 'divi_page_thumbnails', 'false' ) && '' !== $thumb )
-						print_thumbnail( $thumb, $thumbnail["use_timthumb"], $alttext, $width, $height );
-				?>
-
-				<?php endif; ?>
-
-					<div class="entry-content" id = "secure-upload-page">
-
-					<?php
-						the_content();
-
-						if ( ! $is_page_builder_used )
-							wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'Divi' ), 'after' => '</div>' ) );
-					?>
-
-
-<form id = "tax-setup"
+		<form id = "tax-setup"
 			 method="post"
 			 class = "form <?php if ($_POST['isvalid']=='iamvalid') {echo "has-post"; }?>"
 			 enctype="multipart/form-data">
@@ -271,17 +204,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			</div>
 
 			<input type = "hidden" name="isvalid" id = "isvalid" />
-			
-            <?php 
-                if (get_post_custom_values('go_back_page')!=null) {
-                    echo "<a href = '". get_post_custom_values('go_back_page')[0] ."'>";
-                    echo "<div id = 'goback' class = 'goback'>Go Back!</div>";
-                    echo "</a>";
-                }
-                
-            ?>
-
-
+			<button id = "goback" class = "goback">Go Back</button>
 			<button id = "tax-submit">Submit</button>
 			<?php
 
@@ -378,29 +301,3 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			?>
 
 		</form>
-
-
-					</div> <!-- .entry-content -->
-
-				<?php
-					if ( ! $is_page_builder_used && comments_open() && 'on' === et_get_option( 'divi_show_pagescomments', 'false' ) ) comments_template( '', true );
-				?>
-
-				</article> <!-- .et_pb_post -->
-
-			<?php endwhile; ?>
-
-<?php if ( ! $is_page_builder_used ) : ?>
-
-			</div> <!-- #left-area -->
-
-		</div> <!-- #content-area -->
-	</div> <!-- .container -->
-
-<?php endif; ?>
-
-</div> <!-- #main-content -->
-
-<?php
-
-get_footer();

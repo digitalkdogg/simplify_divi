@@ -67,10 +67,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					?>
 
 
-						<?php get_template_part( 'direct-deposit' );   ?>
-
-						<?php get_template_part( 'new-employee' ); ?>
-
 						<?php get_template_part('tax-setup'); ?>
 
 						<?php get_template_part('secure-upload-form'); ?>	
