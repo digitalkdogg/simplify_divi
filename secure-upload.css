@@ -37,11 +37,17 @@
 
 						div#secure-upload-page form h2 {
 							display:block;
-    						margin: 20px 35%;
+    						margin: 20px 25%;
 						}
 
 						div#secure-upload-page form {
 							margin-bottom: 50px;
+						}
+
+						@media only screen and (max-width: 768px) {
+							div#secure-upload-page form {
+								margin-bottom: 100%;
+							}
 						}
 
 						@media only screen and (max-width: 768px) {
@@ -106,133 +112,143 @@
 							select.states {
 								width:250px;
 							}
+							select#rate {
+								width: 250px;
+								border-top-right-radius: 0;
+							}
 					}
 
+					form#direct-deposit {
+						width: 75%;
+						transform: translateX(10%);
+					}
+
+					@media only screen and (max-width: 768px) {
 						form#direct-deposit {
-    						width: 75%;
-    						transform: translateX(10%);
+							width: 100%;
 						}
+					}
 
-						button {
-							padding: 5px 10px;
-							display: inline-block;
-							padding: 0.7em 1.7em;
-							margin: 0 0.3em 0.3em 0;
-							border-radius: 7px;
-							box-sizing: border-box;
-							text-decoration: none;
-							font-weight: 400;
-							color: white;
-							background-color: #47a9bd;
-							box-shadow: inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17), inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15), inset 0 0 0em 0.05em rgba(255,255,255,0.12);
-							text-align: center;
-							position: relative;
-							border: 1px solid #333;
-						}
+					button {
+						padding: 5px 10px;
+						display: inline-block;
+						padding: 0.7em 1.7em;
+						margin: 0 0.3em 0.3em 0;
+						border-radius: 7px;
+						box-sizing: border-box;
+						text-decoration: none;
+						font-weight: 400;
+						color: white;
+						background-color: #47a9bd;
+						box-shadow: inset 0 -0.6em 1em -0.35em rgba(0,0,0,0.17), inset 0 0.6em 2em -0.3em rgba(255,255,255,0.15), inset 0 0 0em 0.05em rgba(255,255,255,0.12);
+						text-align: center;
+						position: relative;
+						border: 1px solid #333;
+					}
 
-						div#goback {
-							background: #ddd;
-							color: black;
-							border:1px solid #333;
-							min-width: 90px;
-							border-radius: 7px;
-							height: 3em;
-							text-align: center;
-							font-size: 12px;
-							display: inline-block;
-							vertical-align: middle;
-							padding: 3px;
-						}
+					div#goback {
+						background: #ddd;
+						color: black;
+						border:1px solid #333;
+						min-width: 90px;
+						border-radius: 7px;
+						height: 3em;
+						text-align: center;
+						font-size: 12px;
+						display: inline-block;
+						vertical-align: middle;
+						padding: 3px;
+					}
 
-						button:hover, div#goback:hover {
-							background: white;
-							color:#47a9aa;
-							cursor:pointer;
-						}
+					button:hover, div#goback:hover {
+						background: white;
+						color:#47a9aa;
+						cursor:pointer;
+					}
 
-						div.row input {
-							border-top-right-radius:7px;
-							border-bottom-right-radius:7px;
-							padding:11px 10px 9px 10px;
-						}
-						div.row label {
-							background: #47a9bd;
-							width: 160px;
-							display: inline-block;
-							color: white;
-							padding: 5px 10px;
-							border-top-left-radius: 7px;
-							border-bottom-left-radius: 7px;
-						}
+					div.row input {
+						border-top-right-radius:7px;
+						border-bottom-right-radius:7px;
+						padding:11px 10px 9px 10px;
+					}
+					div.row label {
+						background: #47a9bd;
+						width: 160px;
+						display: inline-block;
+						color: white;
+						padding: 5px 10px;
+						border-top-left-radius: 7px;
+						border-bottom-left-radius: 7px;
+					}
 
+					div.mobile-block {
+						display:inline;
+					}
+
+					@media only screen and (max-width: 768px) {
+						.row.form-group.checkbox {
+							border: 1px solid #ccc;
+							width: 250px;
+						}
+					}
+
+					@media only screen and (max-width: 768px) {
 						div.mobile-block {
-							display:inline;
-						}
-
-						@media only screen and (max-width: 768px) {
-							.row.form-group.checkbox {
-								border: 1px solid #ccc;
-								width: 250px;
-							}
-						}
-
-						@media only screen and (max-width: 768px) {
-							div.mobile-block {
-								display:block;
-							}
-						}
-
-						@media only screen and (max-width: 768px) {
-							div.row label {
-								border-bottom-left-radius: 0;
-								border-bottom-right-radius: 0;
-								border-top-right-radius: 7px;
-								width: 250px;
-							}
-							div.row input[type="text"], div.row input[type="date"], div.row input[type="email"], div.row input[type="password"]  {
-								border-top-right-radius:0;
-								width:250px !important;
-							}
-						}
-
-						.pristine-error {
-    						min-height: 1em;
-							color:red;
-							display:inline-block;
-							font-family: 'dashicons';
-							font-weight:bold;
-							margin-bottom:7px;
-						}
-
-						.pristine-error:before {
-							content: "\f153";
-							font-size:2em;
-							top: 10px;
-    						position: relative;
-							margin-right:5px;
-						}
-
-						.has-danger input {
-    						border: 1px solid red;
-    						background: #eee;
-						}
-
-						.has-danger label {
-    						border: 1px solid red;
-						}
-
-						.row {
- 						   margin: 10px 0;
-						}
-
-						input#file {
-    						border: 1px solid #aaa;
-    						padding: 7px;
-    						transform: translateY(-1px);
-							width:100px;
-							cursor:pointer;
-						}
-						span.file-info {
 							display:block;
-
 						}
+					}
+
+					@media only screen and (max-width: 768px) {
+						div.row label {
+							border-bottom-left-radius: 0;
+							border-bottom-right-radius: 0;
+							border-top-right-radius: 7px;
+							width: 250px;
+						}
+						div.row input[type="text"], div.row input[type="date"], div.row input[type="email"], div.row input[type="password"]  {
+							border-top-right-radius:0;
+							width:250px !important;
+						}
+					}
+
+					.pristine-error {
+						min-height: 1em;
+						color:red;
+						display:inline-block;
+						font-family: 'dashicons';
+						font-weight:bold;
+						margin-bottom:7px;
+					}
+
+					.pristine-error:before {
+						content: "\f153";
+						font-size:2em;
+						top: 10px;
+						position: relative;
+						margin-right:5px;
+					}
+
+					.has-danger input {
+						border: 1px solid red;
+						background: #eee;
+					}
+
+					.has-danger label {
+						border: 1px solid red;
+					}
+
+					.row {
+						margin: 10px 0;
+					}
+
+					input#file {
+						border: 1px solid #aaa;
+						padding: 7px;
+						transform: translateY(-1px);
+						width:100px;
+						cursor:pointer;
+					}
+					span.file-info {
+						display:block;
+
+					}

@@ -131,12 +131,6 @@ class Simplify {
 
         })
 
-        $('#new-employee-print').on('click', function (e) {
-            e.preventDefault();
-
-            window.print();
-        })
-
         $('input.file').on('change',function () {
             $(this).next('span.file-info').html($(this)[0].files[0].name)
         })
@@ -179,30 +173,9 @@ class Simplify {
             }
         })
 
-     //   if (_this.getUrlParams('form')==undefined) {
-    //        $('form.form').each(function () {
-    //            $(this).hide();
-    //        });
-    //        $('#secure-form').show();
-    //    } else {
-    //        $('form.form').each(function () {
-    //            $(this).hide();
-    //        });
-    //        $('form#'+_this.getUrlParams('form')).show();
-    //    }
-
-        $("input.date").flatpickr();
-
-     //   $("button.goback").on('click', function (event) {
-     //     event.preventDefault();
-     //     let host = simplify.page.location.hostname
-     //     if (host.indexOf('kevin-nas') >= 0) {
-     //       history.back(-1);
-     //     } else {
-     //       window.location.href = simplify.page.location.origin + simplify.page.location.pathname + "../sps/upload-dashboard/";
-     //     }
-
-     //  })
+        setTimeout(function () {
+            $("input.date").flatpickr();
+        },500);
 
         $('select.states').each(function () {
           var select = this;
@@ -217,9 +190,6 @@ class Simplify {
           })
 
         })
-
-
-
 
     }
 

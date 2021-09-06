@@ -130,7 +130,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         ?>
 
                         <button id = "new-employee-submit">Submit</button>
-                        <button id = "new-employee-print">Print As PDF</button>
                         <div id = "status">
                         <?php
 
