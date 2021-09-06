@@ -130,13 +130,21 @@
 							border: 1px solid #333;
 						}
 
-						button#goback {
+						div#goback {
 							background: #ddd;
 							color: black;
 							border:1px solid #333;
+							min-width: 90px;
+							border-radius: 7px;
+							height: 3em;
+							text-align: center;
+							font-size: 12px;
+							display: inline-block;
+							vertical-align: middle;
+							padding: 3px;
 						}
 
-						button:hover, button#goback:hover {
+						button:hover, div#goback:hover {
 							background: white;
 							color:#47a9aa;
 							cursor:pointer;

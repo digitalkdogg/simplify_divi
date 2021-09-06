@@ -80,6 +80,7 @@ class Simplify {
 
         $('#direct-deposit-submit').on('click', function (e) {
             e.preventDefault();
+            alert('hi');
 
             let form = document.getElementById("direct-deposit");
 
@@ -192,16 +193,16 @@ class Simplify {
 
         $("input.date").flatpickr();
 
-        $("button.goback").on('click', function (event) {
-          event.preventDefault();
-          let host = simplify.page.location.hostname
-          if (host.indexOf('kevin-nas') >= 0) {
-            history.back(-1);
-          } else {
-            window.location.href = simplify.page.location.origin + simplify.page.location.pathname + "../sps/upload-dashboard/";
-          }
+     //   $("button.goback").on('click', function (event) {
+     //     event.preventDefault();
+     //     let host = simplify.page.location.hostname
+     //     if (host.indexOf('kevin-nas') >= 0) {
+     //       history.back(-1);
+     //     } else {
+     //       window.location.href = simplify.page.location.origin + simplify.page.location.pathname + "../sps/upload-dashboard/";
+     //     }
 
-        })
+     //  })
 
         $('select.states').each(function () {
           var select = this;

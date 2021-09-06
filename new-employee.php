@@ -62,8 +62,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 					<?php
 						the_content();
 
-                        var_dump(get_post_custom_values( 'go_back_page' ));
-
 						if ( ! $is_page_builder_used )
 							wp_link_pages( array( 'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'Divi' ), 'after' => '</div>' ) );
 					?>
@@ -125,7 +123,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         <?php 
                             if (get_post_custom_values('go_back_page')!=null) {
                                 echo "<a href = '". get_post_custom_values('go_back_page')[0] ."'>";
-                                echo "<button id = 'goback' class = 'goback'>Go Back!</button>";
+                                echo "<div id = 'goback' class = 'goback'>Go Back!</div>";
                                 echo "</a>";
                             }
                             
