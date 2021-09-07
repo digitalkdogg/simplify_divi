@@ -102,7 +102,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			</select>
 			</div>
 			<div class = "row form-group">
-				<label for = "desc" style = "transform: translateY(-35px);">Description of Business Activity :</label>
+				<label for = "desc" class = "translate-y-35">Description of Business Activity :</label>
 				<textarea id = "desc" name = "desc" cols = "45" rows = "5"
 				 required data-pristine-required-message="Please enter a Description of Business Activity"></textarea>
 			</div>

@@ -85,10 +85,16 @@
 					    border-top-right-radius: 7px;
 					    border-bottom-right-radius: 7px;
 					}
-
+				
 					#secure-upload-page textarea {
 						border-top-right-radius: 7px;
 						border-bottom-right-radius: 7px;
+					}
+
+					@media only screen and (max-width: 768px) {
+						#secure-upload-page textarea {
+							width:100%;
+						}
 					}
 
 					#secure-upload-page .hide {
@@ -188,13 +194,21 @@
 					@media only screen and (max-width: 768px) {
 						.row.form-group.checkbox {
 							border: 1px solid #ccc;
-							width: 250px;
+							width: 255px;
 						}
+					}
+
+					.translate-y-35 {
+						transform: translateY(-35px);
 					}
 
 					@media only screen and (max-width: 768px) {
 						div.mobile-block {
 							display:block;
+						}
+
+						.translate-y-35 {
+							transform: translateY(0px);
 						}
 					}
 
@@ -203,7 +217,7 @@
 							border-bottom-left-radius: 0;
 							border-bottom-right-radius: 0;
 							border-top-right-radius: 7px;
-							width: 250px;
+							width: 255px;
 						}
 						div.row input[type="text"], div.row input[type="date"], div.row input[type="email"], div.row input[type="password"]  {
 							border-top-right-radius:0;
