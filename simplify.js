@@ -80,7 +80,6 @@ class Simplify {
 
         $('#direct-deposit-submit').on('click', function (e) {
             e.preventDefault();
-            alert('hi');
 
             let form = document.getElementById("direct-deposit");
 
