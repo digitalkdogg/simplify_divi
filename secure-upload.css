@@ -93,7 +93,13 @@
 
 					@media only screen and (max-width: 768px) {
 						#secure-upload-page textarea {
-							width:100%;
+							width:255px;
+							border-top-right-radius: 0px;
+						}
+
+						#secure-upload-page select {
+							border-top-right-radius: 0px;
+							width:255px;
 						}
 					}
 
@@ -221,7 +227,7 @@
 						}
 						div.row input[type="text"], div.row input[type="date"], div.row input[type="email"], div.row input[type="password"]  {
 							border-top-right-radius:0;
-							width:250px !important;
+							width:255px !important;
 						}
 					}
 
