@@ -25,7 +25,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 <script src = "<?php echo get_stylesheet_directory_uri();?>/libs/crypto-md5.js"></script>
 
 <link rel = "stylesheet" href = "<?php echo get_stylesheet_directory_uri(); ?>/secure-upload.css" />
-
+<link rel = "stylesheet" href = "<?php echo get_stylesheet_directory_uri(); ?>/../../../wp-includes/css/dashicons.min.css" />
 
 <?php if ( ! $is_page_builder_used ) : ?>
 
