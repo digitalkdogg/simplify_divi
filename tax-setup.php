@@ -140,6 +140,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 			<h3>Physical Address</h3>
 			<hr />
+			<div class = "row">
+			<span class = "inline-check"> 
+				 <input type = "checkbox" id = "sameasdelivery" />
+				 Same as delivery address
+				</span>
+			</div>
 			<div class = "row form-group">
 				<label for="physical_address">Address</label>
 				<input type = "text"
