@@ -130,6 +130,30 @@ class Simplify {
 
         })
 
+        $('.address').on('change', function () {
+            if ($('input#sameasdelivery').is(':checked') == true) {
+                let id = $(this).attr('data-phys');
+                console.log(id);
+                console.log($(this).val())
+                $('#'+id).val($(this).val())
+            }
+        })
+
+        $('input#sameasdelivery').on('change', function () {  
+            if ($(this).is(":checked") == true) {
+                $('input#physical_address').val($('#mailing_address').val()).attr('readonly', true);
+                $('input#physical_city').val($('#mailing_city').val()).attr('readonly', true);
+                $('select#physical_state').val($('#mailing_state').val()).attr('disabled', true);
+                $('input#physical_zip').val($('#mailing_zip').val()).attr('readonly', true);
+            } else {
+                $('input#physical_address').removeAttr('readonly');
+                $('input#physical_city').removeAttr('readonly');
+                $('select#physical_state').removeAttr('disabled');
+                $('input#physical_zip').removeAttr('readonly');
+
+            }
+        })
+
         $('input.file').on('change',function () {
             $(this).next('span.file-info').html($(this)[0].files[0].name)
         })

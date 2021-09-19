@@ -9,6 +9,15 @@
 							}
 						}
 
+						input:read-only {
+							background: #f3f3f9;
+							color: #777;
+						}
+
+						select:disabled {
+							background: #f3f3f9;
+						}
+
 						body.page-template-secure-upload div.container {
 							padding-top:0;
 						}

@@ -114,27 +114,27 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				<label for="mailing_address">Address</label>
 				<input type = "text"
 				required data-pristine-required-message="Please enter a mailing address"
-				id = "mailing_address" name = "mailing_address" />
+				id = "mailing_address" name = "mailing_address" class = "address" data-phys="physical_address" />
 			</div>
 			<div class = "row form-group">
 				<label for="mailing_city">City</label>
 				<input type = "text"
 				required data-pristine-required-message="Please enter a mailing City"
-				id = "mailing_city" name = "mailing_city" />
+				id = "mailing_city" name = "mailing_city" class = "address" data-phys="physical_city"/>
 			</div>
 			<div class = "row form-group">
 				<label for="mailing_state">State</label>
 				<select
 				required data-pristine-required-message="Please enter a mailing State"
 				data-default-val = "na"
-				id = "mailing_state" name = "mailing_state" class = "states required">
+				id = "mailing_state" name = "mailing_state" class = "states required address" data-phys="physical_state">
 			</select>
 			</div>
 			<div class = "row form-group">
 				<label for="mailing_zip">Zip</label>
 				<input type = "text"
 				required data-pristine-required-message="Please enter a mailing Zip"
-				id = "mailing_zip" name = "mailing_zip" />
+				id = "mailing_zip" name = "mailing_zip" class = "address" data-phys="physical_zip"/>
 			</div>
 			<br />
 
