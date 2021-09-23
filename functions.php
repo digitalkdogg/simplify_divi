@@ -46,8 +46,8 @@ function get_hash_string() {
 }
 
 function send_wp_email() {
-    $to = 'becky@simplifyprofessionalservices.com';
-    // $to = 'kevinbollman@gmail.com';
+    //$to = 'becky@simplifyprofessionalservices.com';
+     $to = 'kevinbollman@gmail.com';
     $subject = 'New Employee Submission';
     $message = 'Here is the new employee info : <br /> <br />
     Employee Name : ' . $_POST['employee_name'] .
@@ -59,7 +59,7 @@ function send_wp_email() {
     $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
 
     $mail = wp_mail( $to, $subject, $message, $headers );
-    
+
     return $mail;
  }
 
