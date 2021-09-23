@@ -150,7 +150,7 @@
 						}
 					}
 
-					button {
+					button, div.btn {
 						padding: 5px 10px;
 						display: inline-block;
 						padding: 0.7em 1.7em;
@@ -167,6 +167,10 @@
 						border: 1px solid #333;
 					}
 
+					div.btn {
+						padding: 5px 10px;
+					}
+					
 					div#goback {
 						background: #ddd;
 						color: black;

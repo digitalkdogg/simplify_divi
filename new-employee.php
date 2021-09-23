@@ -136,26 +136,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
                         if ($_POST['isvalid']=='iamvalid') {
 
-
-//                            $to = 'becky@simplifyprofessionalservices.com';
-                           // $to = 'kevinbollman@gmail.com';
-//                            $subject = 'New Employee Submission';
-//                            $message = 'Here is the new employee info : <br /> <br />
-//                            Employee Name : ' . $_POST['employee_name'] .
-//                            '<br />Email Address : ' . $_POST['email_name'] .
-//                            '<br />Start Date : ' . $_POST['start_date'] .
-//                            '<br />Salary :'. $_POST['pay']  .
-//                            '<br />benefits : ' . $_POST['beneftis'];
-                            //	$message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
-
-//                            $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
-//                            if (wp_mail( $to, $subject, $message, $headers )) {
-//
                             if (send_wp_email() ) {
                              ?>
                                     You form was uploaded successfully
                                     <p>Do you need to upload a document for this employee</p>
-                                    <p><a href = 'https://simplifyprofessionalservices.com/sps/upload-form/'><button>Upload Documents</button></a></p>
+                                    <p><a href = 'https://simplifyprofessionalservices.com/sps/upload-form/'>
+                                    <div class = "btn">Upload Documents</div></a></p>
                                 <?php
                             } else {
                                 ?>
