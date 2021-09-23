@@ -118,11 +118,11 @@ class Simplify {
 
             if (valid == true) {
                 $(form).find('#isvalid').val('iamvalid');
-                if (window.location.href.indexOf('?form')>0) {
-                   $(form).attr('action', window.location.pathname + '?form=new-employee');
-                } else {
-                    $(form).attr('action', '?form=new-employee');
-                }
+               // if (window.location.href.indexOf('?form')>0) {
+                 //  $(form).attr('action', window.location.pathname + '?form=new-employee');
+               // } else {
+               //     $(form).attr('action', '?form=new-employee');
+               // }
 
                 $(form).submit();
             }
