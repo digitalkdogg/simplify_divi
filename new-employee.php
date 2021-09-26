@@ -131,11 +131,13 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         ?>
 
                         <button id = "new-employee-submit">Submit</button>
-                        <div id = "status">
+                      
                         <?php
 
                         if ($_POST['isvalid']=='iamvalid') {
-
+                            ?>
+                              <div id = "status">
+                            <?php
                             $message = 'Here is the new employee info : <br /> <br />
                             Employee Name : ' . $_POST['employee_name'] .
                             '<br />Email Address : ' . $_POST['email_name'] .
@@ -144,15 +146,22 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             '<br />benefits : ' . $_POST['beneftis'];
                             if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
                              ?>
-                                    You form was uploaded successfully
+                                    <span class="dashicons dashicons-no close"></span>
+                                   <br><span class="dashicons dashicons-smiley"></span>
+                                   <br><br><br><br><br>
+                                    You form was uploaded successfully<br><br> 
                                     <p>Do you need to upload a document for this employee</p>
-                                    <br />
-                                    <a href = 'https://simplifyprofessionalservices.com/sps/upload-form/' target='_blank'>
-                                    <div class = 'btn'>Upload Documents</div></a>
+                                    <br>
+                                    <a href="https://simplifyprofessionalservices.com/sps/upload-form/" target="_blank">
+                                    <div class="btn">Upload Documents</div></a>
                             <?php
                             } else {
                             ?>
-                                We are not able to submit the form at this time
+                                <span class="dashicons dashicons-no close"></span>
+                                   <br><span style = "font-size:3em;">Oh No!</span>
+                                   <br><br><br><br><br>
+                                    It looks like there was an problem processing your request<br><br> 
+                                    <p>Please try your submission again</p>
                             <?php 
                             }
 

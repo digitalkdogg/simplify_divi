@@ -130,6 +130,10 @@ class Simplify {
 
         })
 
+        $('.close').on('click', function () {
+            $('#status').hide();
+        })
+
         $('.address').on('change', function () {
             if ($('input#sameasdelivery').is(':checked') == true) {
                 let id = $(this).attr('data-phys');
