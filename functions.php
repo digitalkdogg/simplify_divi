@@ -45,22 +45,27 @@ function get_hash_string() {
   return $hash ;
 }
 
-function send_to_email($to) {
+function send_to_email($to, $message) {
     //$to = 'becky@simplifyprofessionalservices.com';
    // $to = 'kevinbollman@gmail.com';
     $subject = 'New Employee Submission';
-    $message = 'Here is the new employee info : <br /> <br />
-    Employee Name : ' . $_POST['employee_name'] .
-    '<br />Email Address : ' . $_POST['email_name'] .
-    '<br />Start Date : ' . $_POST['start_date'] .
-    '<br />Salary :'. $_POST['pay']  .
-    '<br />benefits : ' . $_POST['beneftis'];
+   // $message = 'Here is the new employee info : <br /> <br />
+   // Employee Name : ' . $_POST['employee_name'] .
+   // '<br />Email Address : ' . $_POST['email_name'] .
+   // '<br />Start Date : ' . $_POST['start_date'] .
+   // '<br />Salary :'. $_POST['pay']  .
+   // '<br />benefits : ' . $_POST['beneftis'];
     
     $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
 
     $mail = wp_mail( $to, $subject, $message, $headers );
 
-    $mail = send_from_email($_POST['email_name']);
+    $message = 'Thank you for the submission.  We will be in contact with you shortly <br /><br />' .
+    'Have a great day!: <br /> <br />'. 
+    '<p>Please do not reply to this email as this inbox is not monitored</p>';
+
+
+    $mail = send_from_email($_POST['email_name'], $message);
 
     return $mail;
  }
@@ -68,13 +73,7 @@ function send_to_email($to) {
  function send_from_email($to) {
   //$to = 'becky@simplifyprofessionalservices.com';
  // $to = 'kevinbollman@gmail.com';
-  $subject = 'New Employee Submission';
-  $message = 'Here is the new employee info : <br /> <br />
-  Employee Name : ' . $_POST['employee_name'] .
-  '<br />Email Address : ' . $_POST['email_name'] .
-  '<br />Start Date : ' . $_POST['start_date'] .
-  '<br />Salary :'. $_POST['pay']  .
-  '<br />benefits : ' . $_POST['beneftis'];
+  $subject = 'Thank You For Your Submission';
   
   $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
 

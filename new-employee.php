@@ -136,6 +136,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
                         if ($_POST['isvalid']=='iamvalid') {
 
+                            $message = 'Here is the new employee info : <br /> <br />
+                            Employee Name : ' . $_POST['employee_name'] .
+                            '<br />Email Address : ' . $_POST['email_name'] .
+                            '<br />Start Date : ' . $_POST['start_date'] .
+                            '<br />Salary :'. $_POST['pay']  .
+                            '<br />benefits : ' . $_POST['beneftis'];
                             if (send_to_email(get_post_custom_values('send_to_email')) ) {
                              ?>
                                     You form was uploaded successfully
