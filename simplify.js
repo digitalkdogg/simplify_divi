@@ -118,12 +118,7 @@ class Simplify {
 
             if (valid == true) {
                 $(form).find('#isvalid').val('iamvalid');
-               // if (window.location.href.indexOf('?form')>0) {
-                 //  $(form).attr('action', window.location.pathname + '?form=new-employee');
-               // } else {
-               //     $(form).attr('action', '?form=new-employee');
-               // }
-
+                $(this).text('Sending');
                 $(form).submit();
             }
 
