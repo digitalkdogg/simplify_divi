@@ -146,8 +146,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                              ?>
                                     You form was uploaded successfully
                                     <p>Do you need to upload a document for this employee</p>
-                                    <p><a href = 'https://simplifyprofessionalservices.com/sps/upload-form/'>
-                                    <div class = "btn">Upload Documents</div></a></p>
+                                    <br />
+                                    <a href = 'https://simplifyprofessionalservices.com/sps/upload-form/' target='_blank'>
+                                    <div class = 'btn'>Upload Documents</div></a>
                             <?php
                             } else {
                             ?>
