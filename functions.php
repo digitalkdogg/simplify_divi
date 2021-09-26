@@ -45,9 +45,9 @@ function get_hash_string() {
   return $hash ;
 }
 
-function send_wp_email() {
+function send_to_email($to) {
     //$to = 'becky@simplifyprofessionalservices.com';
-     $to = 'kevinbollman@gmail.com';
+   // $to = 'kevinbollman@gmail.com';
     $subject = 'New Employee Submission';
     $message = 'Here is the new employee info : <br /> <br />
     Employee Name : ' . $_POST['employee_name'] .
@@ -60,7 +60,26 @@ function send_wp_email() {
 
     $mail = wp_mail( $to, $subject, $message, $headers );
 
+    $mail = send_from_email($_POST['email_name']);
+
     return $mail;
  }
 
+ function send_from_email($to) {
+  //$to = 'becky@simplifyprofessionalservices.com';
+ // $to = 'kevinbollman@gmail.com';
+  $subject = 'New Employee Submission';
+  $message = 'Here is the new employee info : <br /> <br />
+  Employee Name : ' . $_POST['employee_name'] .
+  '<br />Email Address : ' . $_POST['email_name'] .
+  '<br />Start Date : ' . $_POST['start_date'] .
+  '<br />Salary :'. $_POST['pay']  .
+  '<br />benefits : ' . $_POST['beneftis'];
+  
+  $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
+
+  $mail = wp_mail( $to, $subject, $message, $headers );
+
+  return $mail;
+}
 ?>

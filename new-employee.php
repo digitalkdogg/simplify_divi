@@ -136,17 +136,17 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
                         if ($_POST['isvalid']=='iamvalid') {
 
-                            if (send_wp_email() ) {
+                            if (send_to_email(get_post_custom_values('send_to_email')) ) {
                              ?>
                                     You form was uploaded successfully
                                     <p>Do you need to upload a document for this employee</p>
                                     <p><a href = 'https://simplifyprofessionalservices.com/sps/upload-form/'>
                                     <div class = "btn">Upload Documents</div></a></p>
-                                <?php
+                            <?php
                             } else {
-                                ?>
-                                    We are not able to submit the form at this time
-                                <?php 
+                            ?>
+                                We are not able to submit the form at this time
+                            <?php 
                             }
 
                         }
