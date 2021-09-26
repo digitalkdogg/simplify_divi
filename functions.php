@@ -70,7 +70,7 @@ function send_to_email($to, $message) {
     return $mail;
  }
 
- function send_from_email($to) {
+ function send_from_email($to, $message) {
   //$to = 'becky@simplifyprofessionalservices.com';
  // $to = 'kevinbollman@gmail.com';
   $subject = 'Thank You For Your Submission';
