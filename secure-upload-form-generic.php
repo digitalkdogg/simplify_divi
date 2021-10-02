@@ -112,13 +112,11 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                         ?>
                                         <div id = "status">
                                            <div style="color:#47a9aa;">
-                                                <p class = "margin-20"></p>
-                                                <p class = "margin-20"></p>
-                                                <span class="dashicons dashicons-no close"></span>
-                                               <p class="margin-20"><span class="dashicons dashicons-smiley"></span></p>
-                                               <p class="margin-20"></p><p class="margin-20">
+                                               <span class="dashicons dashicons-smiley"></span>
+                                               <p class="margin-20">
                                                 <?php echo $data['file_name']; ?> was uploaded succesful.  We will be in touch shortly!
-                                                </p>                                           
+                                                </p>     
+                                                <div class = "close btn">Okay I Got It!</div>                                      
                                             </div>
                                             </div>
                                         <?php
@@ -126,32 +124,30 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                                 ?>
                                                 <div id = "status">
                                                  <div style = "color:red;">
-                                                 <span class="dashicons dashicons-no close"></span>
-                                                    <p class = "margin-20"><span style = "font-size:3em;">Oh No!</span></p>
-                                                    <p class = "margin-20"></p>
+                                                 <!--<span class="dashicons dashicons-no close"></span> -->
+                                                    <span style = "font-size:3em;">Oh No!</span>
                                                     <p class = "margin-20">
-                                                        It looks like there was an problem processing your request<br><br> 
+                                                        <p>It looks like there was an problem processing your request</p> 
                                                         <p>Please try your submission again</p>
-                                                                        There was an issue uploading your file please try again
-                                                        </p>
+                                                        <div class = "close btn">Okay I Got It!</div>
+                                                    </p>
                                                 </div>
                                             </div>
                                                 <?php
                                             }
 
                                     } else { ?>
-                                    <div id = "status">
-                                        <div style = "color:red;">
-                                            <span class="dashicons dashicons-no close"></span>
-                                            <p class = "margin-20"><span style = "font-size:3em;">Oh No!</span></p>
-                                            <p class = "margin-20"></p>
-                                            <p class = "margin-20">
-                                                It looks like there was an problem processing your request<br><br> 
-                                                <p>Please try your submission again</p>
-                                                                There was an issue uploading your file please try again
-                                                </p>
-                                        </div>
-                                    </div>
+                                       <div id = "status">
+                                                 <div style = "color:red;">
+                                                 <!--<span class="dashicons dashicons-no close"></span> -->
+                                                    <span style = "font-size:3em;">Oh No!</span>
+                                                    <p class = "margin-20">
+                                                        <p>It looks like there was an problem processing your request</p> 
+                                                        <p>Please try your submission again</p>
+                                                        <div class = "close btn">Okay I Got It!</div>
+                                                    </p>
+                                                </div>
+                                            </div>
                                     <?php
                                     }
                                 }
