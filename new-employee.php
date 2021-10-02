@@ -147,6 +147,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
                              ?>
                                    <div style="color:#47a9aa;">
+                                    <p class = "margin-20"></p>
                                     <span class="dashicons dashicons-no close"></span>
                                     <p class="margin-20"><span class="dashicons dashicons-smiley"></span></p>
                                     <p class="margin-20"></p>

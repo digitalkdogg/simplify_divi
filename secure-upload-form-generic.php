@@ -83,8 +83,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             <input type = "text" id = "company" name = "company" required data-pristine-required-message="Please enter a company" />
                         </div>
                         <div class = "row form-group">
-                            <label for="email">Email</label>
-                            <input type = "email" id = "email" name = "email" required data-pristine-required-message="Please enter a email" />
+                            <label for="email_name">Email</label>
+                            <input type = "email" id = "email_name" name = "email_name" required data-pristine-required-message="Please enter a email" />
 
                         </div>
                         <div class = "row form-group">
@@ -112,6 +112,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                         ?>
                                         <div id = "status">
                                            <div style="color:#47a9aa;">
+                                                <p class = "margin-20"></p>
+                                                <p class = "margin-20"></p>
                                                 <span class="dashicons dashicons-no close"></span>
                                                <p class="margin-20"><span class="dashicons dashicons-smiley"></span></p>
                                                <p class="margin-20"></p><p class="margin-20">
