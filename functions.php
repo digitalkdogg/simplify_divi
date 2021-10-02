@@ -74,4 +74,27 @@ function send_to_email($to, $message) {
 
   return $mail;
 }
+
+function prep_attatchment($file) {
+  $errors= array();
+  $data = array();
+  $data['file_name'] = $file['name'];
+  $data['file_size'] =$file['size'];
+  $data['file_tmp'] =$file['tmp_name'];
+  $data['file_type']=$file['type'];
+  $data['file_ext']=strtolower(end(explode('.',$file['name'])));
+
+  $extensions= array("jpeg","jpg","png","gif", "svg", "pdf", "doc", "docx", "csv" );
+
+  if(in_array($data['file_ext'],$extensions)=== false){
+      $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+  }
+
+  if($data['file_size'] > 200097152){
+      $errors[]='File size must be less than 200 MB';
+  }
+  $data['errors'] = $errors;
+  return $data;
+}
+
 ?>

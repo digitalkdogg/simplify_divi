@@ -107,7 +107,8 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             id = "account_name" name = "account_number" />
                         </div>
                         <div class = "row form-group">
-                            <label for="file">File </label><input type="file" id="checkimg" name="checkimg" class = "file" />
+                            <label for="file">File </label>
+                            <input type="file" id="checkimg" name="checkimg" class = "file" />
                             <span class = "file-info"></span>
                             <div class = "pristine-error" style = "display:none;"></div>
                         </div>
@@ -136,22 +137,24 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         ?>
                         <button id = "direct-deposit-submit">Submit</button>
 
-                        <div id = "status">
+                       
                         <?php
 
                         if ($_POST['isvalid']=='iamvalid') {
 
 
-                            if ($_POST) {
-                                if(isset($_FILES['file'])){
+                            if ($_POST) { ?>
+                             <div id = "status">
+                            <?php
+                                if(isset($_FILES['checkimg'])){
 
 
                                     $errors= array();
-                                    $file_name = $_FILES['file']['name'];
-                                    $file_size =$_FILES['file']['size'];
-                                    $file_tmp =$_FILES['file']['tmp_name'];
-                                    $file_type=$_FILES['file']['type'];
-                                    $file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
+                                    $file_name = $_FILES['checkimg']['name'];
+                                    $file_size =$_FILES['checkimg']['size'];
+                                    $file_tmp =$_FILES['checkimg']['tmp_name'];
+                                    $file_type=$_FILES['checkimg']['type'];
+                                    $file_ext=strtolower(end(explode('.',$_FILES['checkimg']['name'])));
 
                                     $extensions= array("jpeg","jpg","png","gif" );
 

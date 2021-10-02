@@ -334,3 +334,7 @@
 						color: white;
 						cursor: pointer;
 					}
+
+					#status p.margin-20 {
+						margin:20px 0;
+					}
