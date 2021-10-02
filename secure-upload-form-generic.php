@@ -113,7 +113,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                         <div id = "status">
                                            <div style="color:#47a9aa;">
                                                <span class="dashicons dashicons-smiley"></span>
-                                               <p class="margin-20">
+                                               <p class = "margin-20"></p><p class="margin-20">
                                                 <?php echo $data['file_name']; ?> was uploaded succesful.  We will be in touch shortly!
                                                 </p>     
                                                 <div class = "close btn">Okay I Got It!</div>                                      
