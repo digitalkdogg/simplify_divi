@@ -87,6 +87,11 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				required data-pristine-required-message="Please enter a EIN Number"
 				id = "ein" name = "ein" />
 			</div>
+			<div class = "row form-group">
+                <label for="email_name">Email</label>
+				<input type = "email" id = "email_name" name = "email_name" required data-pristine-required-message="Please enter a email" />
+
+            </div>
 
 			<div class = "row form-group">
 				<label for = "ownership_type">Ownership Type :</label>
@@ -297,10 +302,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 
 			if ($_POST['isvalid']=='iamvalid') {
-				if ($_POST) {
-
-				}
-
 
 					$message = 'Dearest Becky <br />';
 					$ignorearr = ['isvalid', 'csrfpId', 'data-id'];
@@ -309,80 +310,90 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 							$message = $message . $key . ': ' . $post . '<br />';
 						}
 					}
-					$to = 'becky@simplifyprofessionalservices.com';
-					//$to = 'kevinbollman@gmail.com';
-					$subject = 'New Tax Setup';
-
-					$headers = array('Content-Type: text/html; charset=UTF-8',
-								'From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
 
 					if(isset($_FILES['file'])){
-						$errors= array();
-						$file_name = $_FILES['file']['name'];
-						$file_size =$_FILES['file']['size'];
-						$file_tmp =$_FILES['file']['tmp_name'];
-						$file_type=$_FILES['file']['type'];
-						$file_ext=strtolower(end(explode('.',$_FILES['file']['name'])));
+		
 
-						$extensions= array("jpeg","jpg","png","gif", "svg", "pdf", "doc", "docx", "csv" );
+					$data = prep_attatchment($_FILES['file']);
 
-						if(in_array($file_ext,$extensions)=== false){
-							$errors[]="extension not allowed, please choose a JPEG or PNG file.";
-						}
+					if(empty($data['errors'])==true  ) {
 
-						if($file_size > 200097152){
-							$errors[]='File size must be less than 200 MB';
-						}
+						if (md5($_POST['data-id'])) {
 
-						if(empty($errors)==true){
-							if (md5($_POST['data-id'])) {
+							$data['file_name'] = str_replace(' ', '_', $data['file_name']);
 
-								$file_name = str_replace(' ', '_', $file_name);
+							if (move_uploaded_file($data['file_tmp'],get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $data['file_name'])==true) {
 
-								if (move_uploaded_file($file_tmp,get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $file_name)==true) {
-								?>
+								$message =  $message .'<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $data['file_name'];
+
+								if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
+											
+								?> 
+								<div id = "status">
+									<div style="color:#47a9aa;">
+										<span class="dashicons dashicons-smiley"></span>
+										<p class = "margin-20"></p><p class="margin-20">
+											<?php echo $data['file_name']; ?> was uploaded succesful.  We will be in touch shortly!
+										</p>     
+										<div class = "close btn">Okay I Got It!</div>                                      
+									</div>
+								</div>
 
 								<?php
-								  $message =  $message .'<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $file_name;
 
-							} else { ?>
-								<div style = "color:red;">
-									There was an issue uploading your file please try again
+								} else {
+								?>
+								<div id = "status">
+									<div style = "color:red;">
+										<span style = "font-size:3em;">Oh No!</span>
+										<p class = "margin-20">
+											<p>It looks like there was an problem processing your request</p> 
+											<p>Please try your submission again</p>
+											<div class = "close btn">Okay I Got It!</div>
+										</p>
+									</div>
 								</div>
 							<?php
 							}
-						} else { ?>
-							<div style = "color:red;">
-								There was an issue uploading your file
+						} else {
+							?>
+							<div id = "status">
+								<div style = "color:red;">
+									<span style = "font-size:3em;">Oh No!</span>
+									<p class = "margin-20">
+										<p>It looks like there was an problem processing your request</p> 
+										<p>Please try your submission again</p>
+										<div class = "close btn">Okay I Got It!</div>
+									</p>
+								</div>
 							</div>
-						<?php
+							<?php
 						}
-					} else { ?>
-						<div style = "color:red;">
+								  
 
-							<?php echo $errors[0]; ?>
-						</div>
-					<?php
+						}
+					} else {
+						?>
+							<div id = "status">
+								<div style = "color:red;">
+									<span style = "font-size:3em;">Oh No!</span>
+									<p class = "margin-20">
+										<p>It looks like there was an problem processing your request</p> 
+										<p>Please try your submission again</p>
+										<div class = "close btn">Okay I Got It!</div>
+									</p>
+								</div>
+							</div>
+							<?php
+
 					}
+
+						
+					} 
 				}
 
 
 							?>
-
-							<?php
-
-
-					if (wp_mail( $to, $subject, $message, $headers )) {
-						?>
-							You form was uploaded successfully
-						<?php
-					}
-
-
-
-			}
-
-			?>
 
 		</form>
 
