@@ -50,7 +50,7 @@ function send_to_email($to, $message) {
     $subject = 'New Employee Submission';
   
     $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
-
+   
     $mail = wp_mail( $to, $subject, $message, $headers );
 
     $message = 'Thank you for the submission.  We will be in contact with you shortly <br /><br />' .

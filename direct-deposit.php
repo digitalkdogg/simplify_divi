@@ -95,6 +95,12 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         </div>
 
                         <div class = "row form-group">
+                            <label for="email_name">Email</label>
+                            <input type = "email" id = "email_name" name = "email_name" required data-pristine-required-message="Please enter a email" />
+
+                        </div>
+
+                        <div class = "row form-group">
                             <label for="routing_number" class = "width-auto-desktop">Bank Routing Number</label>
                             <input type = "password"
                             required data-pristine-required-message="Please enter a routing number"
@@ -143,53 +149,121 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         if ($_POST['isvalid']=='iamvalid') {
 
 
-                            if ($_POST) { ?>
-                             <div id = "status">
+                       //     if ($_POST) { ?>
+                             
                             <?php
                                 if(isset($_FILES['checkimg'])){
+                                    
+                                    $data = prep_attatchment($_FILES['checkimg']);
 
+                                    if(empty($data['errors'])==true){
+                                        
+                                        if (md5($_POST['data-id'])) {
+                                           
+                                            $data['file_name'] = str_replace(' ', '_', $data['file_name']);
 
-                                    $errors= array();
-                                    $file_name = $_FILES['checkimg']['name'];
-                                    $file_size =$_FILES['checkimg']['size'];
-                                    $file_tmp =$_FILES['checkimg']['tmp_name'];
-                                    $file_type=$_FILES['checkimg']['type'];
-                                    $file_ext=strtolower(end(explode('.',$_FILES['checkimg']['name'])));
+                                            if (move_uploaded_file($data['file_tmp'],get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $data['file_name'])==true) {
+                                               
+                                                $message = 'Here is the direct deposit info : <br /> <br />
+                                                              Employee Name : ' . $_POST['employee_name'] .
+                                                              '<br />Checking : ' . $_POST['checking'] .
+                                                              '<br />Savings : ' . $_POST['savings'] .
+                                                              '<br />Routing No :'. $_POST['routing_number']  .
+                                                              '<br />Account No : ' . $_POST['account_number'] .
+                                                              '<br />Check Image : ';
+                                               if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
+                                               
+                                                    ?> 
+                                                    <div id = "status">
+                                                        <div style="color:#47a9aa;">
+                                                            <span class="dashicons dashicons-smiley"></span>
+                                                            <p class = "margin-20"></p><p class="margin-20">
+                                                                <?php echo $data['file_name']; ?> was uploaded succesful.  We will be in touch shortly!
+                                                            </p>     
+                                                            <div class = "close btn">Okay I Got It!</div>                                      
+                                                        </div>
+                                                    </div>
 
-                                    $extensions= array("jpeg","jpg","png","gif" );
+                                                    <?php
 
-                                    if(in_array($file_ext,$extensions)=== false){
-                                        $errors[]="extension not allowed, please choose a JPEG or PNG file.";
-                                    }
+                                               } else {
+                                                   ?>
+                                                    <div id = "status">
+                                                        <div style = "color:red;">
+                                                            <span style = "font-size:3em;">Oh No!</span>
+                                                            <p class = "margin-20">
+                                                                <p>It looks like there was an problem processing your request</p> 
+                                                                <p>Please try your submission again</p>
+                                                                <div class = "close btn">Okay I Got It!</div>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                               }
 
-                                    if($file_size > 200097152){
-                                        $errors[]='File size must be less than 200 MB';
-                                    }
-                                    if(empty($errors)==true){
-                                        $to = 'becky@simplifyprofessionalservices.com';
-                                        //$to = 'kevinbollman@gmail.com';
-                                        $subject = 'Direct Deposit Submission';
-                                        $message = 'Here is the direct deposit info : <br /> <br />
-                                        Employee Name : ' . $_POST['employee_name'] .
-                                        '<br />Checking : ' . $_POST['checking'] .
-                                        '<br />Savings : ' . $_POST['savings'] .
-                                        '<br />Routing No :'. $_POST['routing_number']  .
-                                        '<br />Account No : ' . $_POST['account_number'] .
-                                        '<br />Check Image : ';
-
-                                        $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
-                                        if (wp_mail( $to, $subject, $message, $headers )) {
-                                        ?>
-                                            You form was uploaded successfully
-                                        <?php
+                                            } else {
+                                                ?>
+                                                <div id = "status">
+                                                    <div style = "color:red;">
+                                                        <span style = "font-size:3em;">Oh No!</span>
+                                                        <p class = "margin-20">
+                                                            <p>It looks like there was an problem processing your request</p> 
+                                                            <p>Please try your submission again</p>
+                                                            <div class = "close btn">Okay I Got It!</div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                            }
                                         }
+
                                     }
                                 }
                             }
 
+                                    //$errors= array();
+                                    //$file_name = $_FILES['checkimg']['name'];
+                                    ///$file_size =$_FILES['checkimg']['size'];
+                                    //$file_tmp =$_FILES['checkimg']['tmp_name'];
+                                    //$file_type=$_FILES['checkimg']['type'];
+                                    //$file_ext=strtolower(end(explode('.',$_FILES['checkimg']['name'])));
+
+                                    //$extensions= array("jpeg","jpg","png","gif" );
+
+                                    //if(in_array($file_ext,$extensions)=== false){
+                                    //    $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+                                   // }
+
+                                    //if($file_size > 200097152){
+                                    //    $errors[]='File size must be less than 200 MB';
+                                   // }
+                                    //if(empty($errors)==true){
+                                    //    $to = 'becky@simplifyprofessionalservices.com';
+                                        //$to = 'kevinbollman@gmail.com';
+                                    //    $subject = 'Direct Deposit Submission';
+                          //              $message = 'Here is the direct deposit info : <br /> <br />
+                          //              Employee Name : ' . $_POST['employee_name'] .
+                          //              '<br />Checking : ' . $_POST['checking'] .
+                          //              '<br />Savings : ' . $_POST['savings'] .
+                          //              '<br />Routing No :'. $_POST['routing_number']  .
+                          //              '<br />Account No : ' . $_POST['account_number'] .
+                          //              '<br />Check Image : ';
+
+                                  //      $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
+                                  //      if (wp_mail( $to, $subject, $message, $headers )) {
+                                        
 
 
-                        }
+
+
+                                       // }
+                                  //  }
+                               // }
+                          //  }
+
+
+
+                       // }
 
                         ?>
                         </div>

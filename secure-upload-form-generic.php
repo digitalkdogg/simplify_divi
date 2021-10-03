@@ -98,67 +98,65 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             <button id = "goback" class = "goback">Go Back</button>
                         <button id="submit-secure-file">Submit</button>
 
-                        <?php
-                        if ($_POST) {
-                            if(isset($_FILES['file'])){
-                               $data = prep_attatchment($_FILES['file']);
+                    <?php
+                    if ($_POST) {
+                        if(isset($_FILES['file'])){
+                            $data = prep_attatchment($_FILES['file']);
                                 if(empty($data['errors'])==true){
                                     if (md5($_POST['data-id'])) {
                                         $data['file_name'] = str_replace(' ', '_', $data['file_name']);
-             
-                                        if (move_uploaded_file($data['file_tmp'],get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $data['file_name'])==true) {
-                                            $message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $data['file_name'];
-                                            if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
-                                        ?>
-                                        <div id = "status">
-                                           <div style="color:#47a9aa;">
-                                               <span class="dashicons dashicons-smiley"></span>
-                                               <p class = "margin-20"></p><p class="margin-20">
-                                                <?php echo $data['file_name']; ?> was uploaded succesful.  We will be in touch shortly!
-                                                </p>     
-                                                <div class = "close btn">Okay I Got It!</div>                                      
-                                            </div>
-                                            </div>
-                                        <?php
-                                            } else {
+
+                                           if (move_uploaded_file($data['file_tmp'],get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $data['file_name'])==true) {
+                                                $message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $data['file_name'];
+                                                if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
                                                 ?>
                                                 <div id = "status">
-                                                 <div style = "color:red;">
-                                                 <!--<span class="dashicons dashicons-no close"></span> -->
-                                                    <span style = "font-size:3em;">Oh No!</span>
-                                                    <p class = "margin-20">
-                                                        <p>It looks like there was an problem processing your request</p> 
-                                                        <p>Please try your submission again</p>
-                                                        <div class = "close btn">Okay I Got It!</div>
-                                                    </p>
+                                                    <div style="color:#47a9aa;">
+                                                        <span class="dashicons dashicons-smiley"></span>
+                                                        <p class = "margin-20"></p><p class="margin-20">
+                                                            <?php echo $data['file_name']; ?> was uploaded succesful.  We will be in touch shortly!
+                                                        </p>     
+                                                        <div class = "close btn">Okay I Got It!</div>                                      
+                                                    </div>
                                                 </div>
-                                            </div>
                                                 <?php
-                                            }
+                                                } else {
+                                                ?>
+                                                    <div id = "status">
+                                                        <div style = "color:red;">
+                                                            <span style = "font-size:3em;">Oh No!</span>
+                                                            <p class = "margin-20">
+                                                                <p>It looks like there was an problem processing your request</p> 
+                                                                <p>Please try your submission again</p>
+                                                                <div class = "close btn">Okay I Got It!</div>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                <?php
+                                                }
 
-                                    } else { ?>
-                                       <div id = "status">
-                                                 <div style = "color:red;">
-                                                 <!--<span class="dashicons dashicons-no close"></span> -->
-                                                    <span style = "font-size:3em;">Oh No!</span>
-                                                    <p class = "margin-20">
-                                                        <p>It looks like there was an problem processing your request</p> 
-                                                        <p>Please try your submission again</p>
-                                                        <div class = "close btn">Okay I Got It!</div>
-                                                    </p>
+                                            } else { ?>
+                                                <div id = "status">
+                                                    <div style = "color:red;">
+                                                        <span style = "font-size:3em;">Oh No!</span>
+                                                        <p class = "margin-20">
+                                                            <p>It looks like there was an problem processing your request</p> 
+                                                            <p>Please try your submission again</p>
+                                                            <div class = "close btn">Okay I Got It!</div>
+                                                        </p>
                                                 </div>
-                                            </div>
-                                    <?php
-                                    }
+                                                </div>
+                                            <?php
+                                            }
+                                        }
+                                    } 
                                 }
-                            } 
-                        }
 
-                    }
+                            }
 
 
                     ?>
-                    </div> <!-- end status -->
+
 
 
                 </form>
