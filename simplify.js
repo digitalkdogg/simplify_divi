@@ -187,21 +187,9 @@ class Simplify {
             }
         })
 
-        setTimeout(function () {
-            try {
-                $("input.date").flatpickr();
-            } catch(e) {
-                setTimeout(function () {
-                    try {
-                        $("input.date").flatpickr();
-                    } catch(e) {
-                        setTimeout(function () {
-                            $("input.date").flatpickr();
-                        },500)
-                    }
-                },500)
-            }
-        },500);
+        $('input.date').each(function () {
+            flatpickr(this);
+        });
 
         $('select.states').each(function () {
           var select = this;
