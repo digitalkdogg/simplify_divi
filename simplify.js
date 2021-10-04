@@ -66,11 +66,7 @@ class Simplify {
 
             if (valid == true) {
                 $(form).find('#isvalid').val('iamvalid');
-                if (window.location.href.indexOf('?form')>0) {
-                   $(form).attr('action', window.location.pathname + '?form=tax-setup');
-                } else {
-                    $(form).attr('action', '?form=tax-setup');
-                }
+           
 
                 $(form).submit();
             }
@@ -96,11 +92,7 @@ class Simplify {
 
             if (valid == true) {
                 $(form).find('#isvalid').val('iamvalid');
-                if (window.location.href.indexOf('?form')>0) {
-                   $(form).attr('action', window.location.pathname + '?form=direct-deposit');
-                } else {
-                    $(form).attr('action', '?form=direct-deposit');
-                }
+             
 
                 $(form).submit();
             }
