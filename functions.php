@@ -52,6 +52,9 @@ function send_to_email($to, $message) {
     $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
    
     $mail = wp_mail( $to, $subject, $message, $headers );
+    if ($mail == false) {
+      $mail = wp_mail( get_option('admin_email'), $subject, $message, $headers ); 
+    }
 
     $message = 'Thank you for the submission.  We will be in contact with you shortly <br /><br />' .
     'Have a great day!: <br /> <br />'. 
@@ -71,6 +74,9 @@ function send_to_email($to, $message) {
   $headers = array('Content-Type: text/html; charset=UTF-8','From:SecureUpload <secureupload@simplifyprofessionalservices.com>');
 
   $mail = wp_mail( $to, $subject, $message, $headers );
+  if ($mail == false) {
+    $mail = wp_mail( get_option('admin_email'), $subject, $message, $headers ); 
+  }
 
   return $mail;
 }
