@@ -75,20 +75,20 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     <!--<div id = "main-form" class = "form"> -->
                         <input type = "hidden" name = "data-id" id = "data-id" value = "<?php echo get_hash_string(); ?>" />
                         <div class = "row form-group">
-                            <label for="person_name">Name</label>
+                            <label for="person_name">* Name :</label>
                             <input type = "text" required data-pristine-required-message="Please enter a name" id = "person_name" name = "person_name" />
                         </div>
                         <div class = "row form-group">
-                            <label for="company">Company</label>
+                            <label for="company">* Company :</label>
                             <input type = "text" id = "company" name = "company" required data-pristine-required-message="Please enter a company" />
                         </div>
                         <div class = "row form-group">
-                            <label for="email_name">Email</label>
+                            <label for="email_name">* E-mail :</label>
                             <input type = "email" id = "email_name" name = "email_name" required data-pristine-required-message="Please enter a email" />
 
                         </div>
                         <div class = "row form-group">
-                            <label for="file">File </label><input type="file" id="file" name="file" class = "file" />
+                            <label for="file">* File : </label><input type="file" id="file" name="file" class = "file" />
                             <span class = "file-info"></span>
                             <div class = "pristine-error" style = "display:none;"></div>
                         </div>

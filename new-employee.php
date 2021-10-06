@@ -69,21 +69,21 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                     <form id = "new-employee" class = "form" method="post" >
                     <h2>New Employee Form</h2>
                         <div class = "row form-group">
-                            <label for="employee_name">Employee Name</label>
+                            <label for="employee_name">* Employee Name :</label>
                             <input type = "text"
                             required data-pristine-required-message="Please enter a name"
                             id = "employee_name" name = "employee_name" />
                         </div>
 
                         <div class = "row form-group">
-                            <label for="email_name">Email Address</label>
+                            <label for="email_name">* Email Address : </label>
                             <input type = "email"
                             required data-pristine-required-message="Please enter a email address"
                             id = "email_name" name = "email_name" />
                         </div>
 
                         <div class = "row form-group">
-                            <label for="start_date">Start Date</label>
+                            <label for="start_date">* Start Date : </label>
                             <input type = "text"
                             class="date"
                             required data-pristine-required-message="Please enter a start date"
@@ -92,14 +92,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 
 
                         <div class = "row form-group">
-                            <label for="pay">Rate Pay or Salary </label>
+                            <label for="pay">* Rate Pay or Salary : </label>
                             <input type = "text"
                             required data-pristine-required-message="Please enter a rate pay or salary"
                             id = "pay" name = "pay" />
                         </div>
 
                         <div class = "row form-group">
-                            <label for="rate">Unit Of Pay:</label>
+                            <label for="rate">* Unit Of Pay :</label>
                             <select
                                     data-default-val="select"
                                     required data-pristine-required-message="Please enter a rate of pay"
@@ -110,7 +110,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         </div>
 
                         <div class = "row form-group">
-                            <label for="benefits">Benefits </label>
+                            <label for="benefits">* Benefits :</label>
                             <input type = "text"
                             required data-pristine-required-message="Please enter something for the benefits"
                             id = "benefits" name = "beneftis" />

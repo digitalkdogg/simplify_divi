@@ -31,6 +31,7 @@ class Simplify {
             }
 
             if (valid == true) {
+                $(this).text('Sending');
                 $(this).parents('form').submit();
             }
         })
@@ -66,9 +67,18 @@ class Simplify {
 
             if (valid == true) {
                 $(form).find('#isvalid').val('iamvalid');
-           
-
+                $(this).text('Sending');
+                $('#validate-status').hide();
                 $(form).submit();
+            } else {
+                if ($('#status').length ==0) {
+                    $('validate-status').show();
+                    $('<span />', {
+                        'id': 'validation-status',
+                        'style': 'color: red;',
+                        'text': 'There is an issue with your form.  Please check the form and try again.'
+                    }).insertAfter('#tax-submit')
+                }
             }
 
         })
@@ -92,8 +102,7 @@ class Simplify {
 
             if (valid == true) {
                 $(form).find('#isvalid').val('iamvalid');
-             
-
+                $(this).text('Sending');
                 $(form).submit();
             }
 

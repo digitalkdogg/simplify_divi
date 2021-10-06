@@ -75,14 +75,14 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         <br />
 
                         <div class = "row form-group">
-                            <label for="employee_name">Employee Name</label>
+                            <label for="employee_name">* Employee Name : </label>
                             <input type = "text"
                             required data-pristine-required-message="Please enter a name"
                             id = "employee_name" name = "employee_name" />
                         </div>
 
                         <div class = "row form-group checkbox">
-                            <label>Account Type</label>
+                            <label>* Account Type :</label>
                             <label for="checking" style = "background:transparent; color:black; width:auto; ">Checking : </label>
                             <input type = "checkbox" id = "checking" name = "checking" />
                             <div class = "mobile-block"></div>
@@ -95,25 +95,25 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                         </div>
 
                         <div class = "row form-group">
-                            <label for="email_name">Email</label>
+                            <label for="email_name">* E-mail : </label>
                             <input type = "email" id = "email_name" name = "email_name" required data-pristine-required-message="Please enter a email" />
 
                         </div>
 
                         <div class = "row form-group">
-                            <label for="routing_number" class = "width-auto-desktop">Bank Routing Number</label>
-                            <input type = "password"
+                            <label for="routing_number" class = "width-auto-desktop">* Bank Routing Number : </label>
+                            <input type = "text" class = "password" autocomplete="off"
                             required data-pristine-required-message="Please enter a routing number"
                             id = "routing_number" name = "routing_number" />
                         </div>
                         <div class = "row form-group">
-                            <label for="account_number" class = "width-auto-desktop">Bank Account Number</label>
-                            <input type = "password"
+                            <label for="account_number" class = "width-auto-desktop">* Bank Account Number :</label>
+                            <input type = "text" class = "password" autocomplete="off"
                             required data-pristine-required-message="Please enter a routing number"
                             id = "account_name" name = "account_number" />
                         </div>
                         <div class = "row form-group">
-                            <label for="file">File </label>
+                            <label for="file">* File : </label>
                             <input type="file" id="checkimg" name="checkimg" class = "file" />
                             <span class = "file-info"></span>
                             <div class = "pristine-error" style = "display:none;"></div>
