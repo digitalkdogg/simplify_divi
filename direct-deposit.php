@@ -171,7 +171,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                                               '<br />Email : ' . $_POST['email_name'] .
                                                               '<br />Routing No :'. $_POST['routing_number']  .
                                                               '<br />Account No : ' . $_POST['account_number'] .
-                                                              '<br />Check Image : ';
+                                                              '<br />Check Image : ' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $data['file_name'];
                                                if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
                                                
                                                     ?> 

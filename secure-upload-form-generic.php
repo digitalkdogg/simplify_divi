@@ -107,7 +107,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                                         $data['file_name'] = str_replace(' ', '_', $data['file_name']);
 
                                            if (move_uploaded_file($data['file_tmp'],get_template_directory() . "/../../../uploads/". substr($_POST['data-id'], -7) . '--' . $data['file_name'])==true) {
-                                                $message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $data['file_name'];
+                                                $message = 'Dearest Becky!<br /><br /> There is a new submission<br /><br /> From : ' . $_POST['person_name'] . '<br />Email : ' . $_POST['email_name'] . '<br />Link :' . WP_CONTENT_URL . '/../uploads/' . substr($_POST['data-id'], -7) . '--' . $data['file_name'];
                                                 if (send_to_email(get_post_custom_values('send_to_email'), $message) ) {
                                                 ?>
                                                 <div id = "status">
