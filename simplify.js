@@ -8,11 +8,11 @@ class Simplify {
     }
 
     init() {
-        if ($('#top-menu-nav').length > 0) {
-            if ($('#top-menu-nav').find('li.menu-item-has-children').length>0) {
-                $('#top-menu-nav').find('li.menu-item-has-children').find('a:first').addClass('nogo')
+        if (jQuery('#top-menu-nav').length > 0) {
+            if (jQuery('#top-menu-nav').find('li.menu-item-has-children').length>0) {
+                jQuery('#top-menu-nav').find('li.menu-item-has-children').find('a:first').addClass('nogo')
 
-                $('a.nogo').on('click', function (e) {
+                jQuery('a.nogo').on('click', function (e) {
                     e.preventDefault();
                 })
             }
@@ -263,14 +263,11 @@ class Simplify {
 } //end Simplify class
 
    var simplify = new Simplify();
-   
-   if ($==undefined) {
-        var $ = jQuery;
-    }
+
 setTimeout(function () {
 
-    $(document).ready(function () {
-       if ($('#secure-upload-page').length > 0) {
+    jQuery(document).ready(function () {
+       if (jQuery('#secure-upload-page').length > 0) {
             simplify.secureUplaodPage();
         }
 

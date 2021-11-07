@@ -2,7 +2,8 @@
 /* Write your awesome functions below */
 add_action('wp_enqueue_scripts', 'simplify_custom_js');
 function simplify_custom_js() {
-    wp_enqueue_script('simplify', get_stylesheet_directory_uri().'/simplify.js');
+    wp_enqueue_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js', 'before');
+    wp_enqueue_script('simplify', get_stylesheet_directory_uri().'/simplify.js', 'after');
 }
 
 function get_hash_string() {
