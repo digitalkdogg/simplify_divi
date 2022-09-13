@@ -82,6 +82,15 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             id = "email_name" name = "email_name" />
                         </div>
 
+
+                        <div class = "row form-group">
+                            <label for="company_name">* Company Name : </label>
+                            <input type = "text"
+                            required data-pristine-required-message="Please enter a company name"
+                            id = "company_name" name = "company_name" />
+                        </div>
+
+
                         <div class = "row form-group">
                             <label for="start_date">* Start Date : </label>
                             <input type = "text"
@@ -141,6 +150,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
                             $message = 'Here is the new employee info : <br /> <br />
                             Employee Name : ' . $_POST['employee_name'] .
                             '<br />Email Address : ' . $_POST['email_name'] .
+                            '<br />Company Name : ' . $_POST['company_name'] .
                             '<br />Start Date : ' . $_POST['start_date'] .
                             '<br />Salary :'. $_POST['pay']  .
                             '<br />benefits : ' . $_POST['beneftis'];
